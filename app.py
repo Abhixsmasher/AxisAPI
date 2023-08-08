@@ -203,6 +203,27 @@ def CV_handle():
     
     return jsonify(response)
 
+@app.route('/Paraphrasejd',methods=['GET'])
+def paraphrase():
+    JD_text=str(request.args.get('description'))
+    role=str(request.args.get('role'))
+    prompt="For the role of "+role+"and the following JD,make suitable changes to it and \
+    SHOW ONLY THE COMPLETELY MODIFIED JD WITH ONLY THE SPECIFICATIONS AND ROLE MENTIONED AND NO MORE : "+ JD_text
+    response = openai.Completion.create(
+        engine="text-davinci-002",  # Use appropriate engine (GPT-3) or any upgraded version
+        prompt=prompt,
+        max_tokens=len(JD_text),
+        stop = ["input:"],
+    )
+
+    # Extract the generated questions from the API response
+    print(response)
+    New_JD = response['choices'][0]['text']
+    ans={
+        "JD": New_JD
+    }
+    return jsonify(ans)
+    
 @app.route('/Question',methods=['GET'])
 def gen_questions():
     JD_text=str(request.args.get('description'))
