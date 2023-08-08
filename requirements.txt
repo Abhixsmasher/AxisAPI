@@ -3,8 +3,6 @@ Gunicorn
 scikit-learn
 numpy
 PyPDF2
-transformers
 nltk
 openai
 googledrivedownloader
-torch
