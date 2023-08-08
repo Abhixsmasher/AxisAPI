@@ -202,7 +202,7 @@ def CV_handle():
     
     return jsonify(response)
 
-@app.route('/Paraphrasejd',methods=['GET'])
+@app.route('/Paraphrasejd',methods=['GET','POST'])
 def paraphrase():
     JD_text=str(request.args.get('description'))
     role=str(request.args.get('role'))
