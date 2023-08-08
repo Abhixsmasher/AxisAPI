@@ -217,7 +217,6 @@ def paraphrase():
     )
 
     # Extract the generated questions from the API response
-    print(response)
     New_JD = response['choices'][0]['text']
     ans={
         "JD": New_JD
