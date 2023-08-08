@@ -3,11 +3,8 @@ Gunicorn
 scikit-learn
 numpy
 PyPDF2
-nltk
-sklearn
 transformers
 nltk
-fitz
 openai
 smtplib
 ssl
