@@ -22,7 +22,7 @@ from email.message import EmailMessage
 
 app = Flask(__name__)
 
-nltk.download(‘stopwords’)
+nltk.download("stopwords")
 tier1=['BITS Pilani',
 'DTU',
 'NSUT Delhi',
