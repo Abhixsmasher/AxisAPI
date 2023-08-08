@@ -1,6 +1,6 @@
 flask
 Gunicorn
-sklearn
+scikit-learn
 numpy
 PyPDF2
 nltk
