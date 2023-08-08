@@ -148,7 +148,11 @@ def generate_interview_questions(job_description):
     return questions
 
 def get_question_score(question,response):
-    prompt = "The question is: "+question+" The answer is: "+response+" Rate the response out of 10 (You can use decimals). \
+    questions=""
+    questions.join(question)
+    answers=""
+    answers.join(response)
+    prompt = "The question are: "+questions+" The answers are: "+answers+" Rate the response out of 50 (You can use decimals). \
     The answer should be specific to role mentioned in the question. JUST MENTION THE SCORE(just numerical value) \
     AND NOTHING ELSE."
     answer= openai.Completion.create(
@@ -211,10 +215,7 @@ def assess():
     questions=request.args.getlist('questions')
     answers=request.args.getlist('answers')
     email=request.args.get('email')
-    score=0
-    for i in range(len(questions)):
-        time.sleep(20)
-        score=score+float(get_question_score(questions[i],answers[i]))
+    score=float(get_question_score(questions,answers))
     response={
         'email': email,
         'score': score
