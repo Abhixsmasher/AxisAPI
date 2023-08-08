@@ -98,7 +98,7 @@ tier2=['IIIT Bangalore',
 'NIT Uttarakhand',
 'NIT Andhra Pradesh']
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 def tokenize(txt):
     tokens= re.split('\W+', txt)
