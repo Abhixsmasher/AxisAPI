@@ -254,6 +254,3 @@ def sendMail():
         "sent" : "true",
     }
     return jsonify(response)
-
-if __name__=='__main__':
-    app.run(port=7777)
