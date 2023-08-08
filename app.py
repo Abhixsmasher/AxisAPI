@@ -144,20 +144,19 @@ def generate_interview_questions(job_description):
 
     # Extract the generated questions from the API response
     questions = [choice['text'] for choice in response['choices']]
-
     return questions
 
 def get_question_score(question,response):
     questions=""
-    for i in range(len(questions)):
-        questions.append(i)
-        questions.append(question[i])
+    for i in range(len(question)):
+        questions=questions+str(i)
+        questions=questions+question[i]
     answers=""
-    for i in range(len(questions)):
-        answers.append(i)
-        answers.append(response[i])
-    prompt = "The question are: "+questions+" The answers are: "+answers+" Rate the response out of 50 (You can use decimals). \
-    The answer should be specific to tech roles. JUST MENTION THE SCORE(just numerical value) \
+    for i in range(len(response)):
+        answers=answers+str(i)
+        answers=answers+response[i]
+    prompt = "The question are: "+questions+" The answers are: "+answers+". Score all the responses combined out of 50 combined considering\
+    the answers specific to tech roles. JUST MENTION THE FINAL SCORE\
     AND NOTHING ELSE."
     answer= openai.Completion.create(
         engine="text-davinci-002",  # Use appropriate engine (GPT-3) or any upgraded version
@@ -167,7 +166,7 @@ def get_question_score(question,response):
         n=1,  # Number of questions to generate
     )
     score = answer['choices'][0]['text']
-    rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", score)
+    rr = re.findall("[+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", score)
     return rr[0]
 
 @app.route('/CV',methods=['GET'])
