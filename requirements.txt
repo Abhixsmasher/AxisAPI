@@ -6,6 +6,4 @@ PyPDF2
 transformers
 nltk
 openai
-smtplib
-ssl
 googledrivedownloader
