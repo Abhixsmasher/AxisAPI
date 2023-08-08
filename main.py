@@ -16,7 +16,6 @@ from google_drive_downloader import GoogleDriveDownloader as gdd
 import transformers
 import nltk
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
-import fitz  # PyMuPDF, for handling PDFs
 import openai
 import time
 import smtplib
