@@ -1,0 +1,17 @@
+flask
+json
+time
+os
+re
+sklearn
+numpy
+PyPDF2
+nltk
+sklearn
+google_drive_downloader
+transformers
+nltk
+fitz
+openai
+smtplib
+ssl
