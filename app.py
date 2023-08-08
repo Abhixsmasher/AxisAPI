@@ -149,11 +149,15 @@ def generate_interview_questions(job_description):
 
 def get_question_score(question,response):
     questions=""
-    questions.join(question)
+    for i in range(len(questions)):
+        questions.append(i)
+        questions.append(question[i])
     answers=""
-    answers.join(response)
+    for i in range(len(questions)):
+        answers.append(i)
+        answers.append(response[i])
     prompt = "The question are: "+questions+" The answers are: "+answers+" Rate the response out of 50 (You can use decimals). \
-    The answer should be specific to role mentioned in the question. JUST MENTION THE SCORE(just numerical value) \
+    The answer should be specific to tech roles. JUST MENTION THE SCORE(just numerical value) \
     AND NOTHING ELSE."
     answer= openai.Completion.create(
         engine="text-davinci-002",  # Use appropriate engine (GPT-3) or any upgraded version
@@ -210,7 +214,37 @@ def gen_questions():
         'questions' : final_quest 
     }
     return jsonify(response)
+    
+@app.route('/TestMail',methods=['POST'])
+# Set the subject and body of the email
+def sendTestMail():
+    param=str(request.args.get('email'))
+    email_sender = 'hirexs71@gmail.com'
+    email_password = 'tcfpjoepyfxyjacd'
+    email_receiver = param
+    subject = 'Congratulations! You have been shortlisted from HireXS!'
+    body = """
+    Congratuations! You have been identified 
+    """
 
+    em = EmailMessage()
+    em['From'] = email_sender
+    em['To'] = email_receiver
+    em['Subject'] = subject
+    em.set_content(body)
+
+# Add SSL (layer of security)
+    context = ssl.create_default_context()
+
+# Log in and send the email
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+        smtp.login(email_sender, email_password)
+        smtp.sendmail(email_sender, email_receiver, em.as_string())
+    response={
+        "sent" : "true",
+    }
+    return jsonify(response)
+    
 @app.route('/Assess',methods=['GET'])
 def assess():
     questions=request.args.getlist('questions')
@@ -223,8 +257,8 @@ def assess():
     }
     return jsonify(response)
 
-@app.route('/Mail',methods=['GET'])
-def sendMail():
+@app.route('/SelectMail',methods=['POST'])
+def sendSelectMail():
     param=str(request.args.get('email'))
     email_sender = 'hirexs71@gmail.com'
     email_password = 'tcfpjoepyfxyjacd'
@@ -233,7 +267,7 @@ def sendMail():
 # Set the subject and body of the email
     subject = 'Congratulations! You have been shortlisted from HireXS!'
     body = """
-    Congratuations! You have been identified 
+    Congratuations! You have been selected for interview
     """
 
     em = EmailMessage()
