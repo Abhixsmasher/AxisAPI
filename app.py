@@ -163,7 +163,8 @@ def get_question_score(question,response):
         n=1,  # Number of questions to generate
     )
     score = answer['choices'][0]['text']
-    return score
+    rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", score)
+    return rr[0]
 
 @app.route('/CV',methods=['GET'])
 def CV_handle():
