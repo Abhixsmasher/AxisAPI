@@ -1,7 +1,5 @@
 flask
 Gunicorn
-time
-os
 re
 sklearn
 numpy
