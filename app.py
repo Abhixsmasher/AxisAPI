@@ -235,7 +235,7 @@ def gen_questions():
     }
     return jsonify(response)
     
-@app.route('/TestMail',methods=['POST'])
+@app.route('/TestMail',methods=['GET','POST'])
 # Set the subject and body of the email
 def sendTestMail():
     param=str(request.args.get('email'))
@@ -277,7 +277,7 @@ def assess():
     }
     return jsonify(response)
 
-@app.route('/SelectMail',methods=['POST'])
+@app.route('/SelectMail',methods=['GET','POST'])
 def sendSelectMail():
     param=str(request.args.get('email'))
     email_sender = 'hirexs71@gmail.com'
