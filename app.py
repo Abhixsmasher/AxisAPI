@@ -13,9 +13,7 @@ from sklearn.metrics.pairwise import linear_kernel
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from google_drive_downloader import GoogleDriveDownloader as gdd
-import transformers
 import nltk
-from transformers import GPT2Tokenizer, GPT2LMHeadModel
 import openai
 import time
 import smtplib
@@ -101,8 +99,6 @@ tier2=['IIIT Bangalore',
 'NIT Andhra Pradesh']
 
 openai.api_key = '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'
-tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
-model = GPT2LMHeadModel.from_pretrained("gpt2")
 
 def tokenize(txt):
     tokens= re.split('\W+', txt)
