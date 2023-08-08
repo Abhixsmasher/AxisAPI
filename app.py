@@ -171,9 +171,10 @@ def CV_handle():
     inst=str(request.args.get('institute'))
     cv=str(request.args.get('CV'))
     ID=url_to_id(cv)
-    gdd.download_file_from_google_drive(file_id=ID, dest_path='./JD and CVs/CV.pdf')
-    location= './JD and CVs/CV.pdf'
-    resume_tokens=resume_analysis(location)
+    download_stream = io.BytesIO()
+    gdd.download_file_from_google_drive(file_id=ID, dest_file_obj=download_stream)
+    downloaded_content = download_stream.getvalue()
+    resume_tokens = resume_analysis_from_memory(downloaded_content)
     score=jaccard_similarity(jd_vec, resume_tokens)
     score=score*10
     cgpa=cgpa/10
