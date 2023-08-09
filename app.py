@@ -206,8 +206,8 @@ def CV_handle():
 def paraphrase():
     JD_text=str(request.args.get('description'))
     role=str(request.args.get('role'))
-    prompt="For the role of "+role+"and the following JD,make suitable changes to it and \
-    SHOW ONLY THE COMPLETELY MODIFIED JD WITH ONLY THE SPECIFICATIONS AND ROLE MENTIONED AND NO MORE WHILE REPLACING THE % with a space as the JD is coming\
+    prompt="For the role of "+role+" and the following JD, paraphrase it to suit better to the role and \
+    PRINT ONLY THE MODIFIED JD WITH ONLY THE SPECIFICATIONS AND ROLE MENTIONED AND NO MORE WHILE REPLACING THE % with space as the JD is coming\
     from a URL: "+ JD_text
     response = openai.Completion.create(
         engine="text-davinci-002",  # Use appropriate engine (GPT-3) or any upgraded version
