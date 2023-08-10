@@ -331,7 +331,7 @@ def sendSelectMail():
 def save_to_mongodb():
     email= str(request.args.get('email'))
     score= request.args.get('score')
-    job_id= str(request.args.get('job_id')
+    job_id= str(request.args.get('job_id'))
     client = pymongo.MongoClient("mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/")
     db = client["test"]
     # collection = db['testScore']
