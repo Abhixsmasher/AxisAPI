@@ -342,22 +342,21 @@ def save_to_mongodb():
 
     if user:
         user_id = user['_id']
+        update_result = cvs_collection.update_one(
+            {'jobId': job_id, 'owner': user_id},
+            {'$set': {'testScore': score}}
+        )
+
+        entry = {
+            'jobid': job_id,
+            'email': email,
+            'score': score
+        }
+    # collection.insert_one(entry)
+        client.close()
     else:
         print("Candidate email not found.")
-        exit()
-    
-    update_result = cvs_collection.update_one(
-        {'jobId': job_id, 'owner': user_id},
-        {'$set': {'testScore': score}}
-    )
-
-    entry = {
-        'jobid': job_id,
-        'email': email,
-        'score': score
-    }
-    # collection.insert_one(entry)
-    client.close()
+        client.close()
     response={
         "val":"None"
     }
