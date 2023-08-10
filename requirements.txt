@@ -6,3 +6,4 @@ PyPDF2
 nltk
 openai
 googledrivedownloader
+pymongo
