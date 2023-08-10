@@ -19,6 +19,7 @@ import openai
 import time
 import smtplib
 import ssl
+import pymongo
 from email.message import EmailMessage
 
 app = Flask(__name__)
