@@ -242,9 +242,13 @@ def sendTestMail():
     email_sender = 'hirexs71@gmail.com'
     email_password = 'tcfpjoepyfxyjacd'
     email_receiver = param
-    subject = 'Congratulations! You have been shortlisted from HireXS!'
+    subject = ' Assessment Link from HireXS - Urgent Completion Required'
     body = """
-    Congratuations! You have been identified 
+    Dear Candidate,
+    I hope this email finds you well. We are excited to inform you that we have identified you as a promising candidate from HireXS.
+    As part of our rigorous selection process, we kindly request your assistance in evaluating your suitability for this position.
+    Please complete the below assesment within a day so that we can further the evaluation process.
+    Assesment Link:- 
     """
 
     em = EmailMessage()
@@ -285,9 +289,23 @@ def sendSelectMail():
     email_receiver = param
 
 # Set the subject and body of the email
-    subject = 'Congratulations! You have been shortlisted from HireXS!'
+    subject = 'Congratulations on Your Selection for an Interview at Axis Bank!1'
     body = """
-    Congratuations! You have been selected for interview
+    Dear Candidate,
+    I am thrilled to inform you that after a thorough review of your application, we are impressed with your qualifications and experiences,
+    and we would like to invite you for an interview at Axis Bank.
+    Your application stood out among a competitive pool of candidates, and we believe your skills and background align well with what we are looking
+    for in this position.
+    
+    Interview Details:
+    Date: 15th September 2023
+    Time: 10:00 AM
+    Location: Axis Bank, Bangalore
+    
+    Best regards,
+
+    Axis Bank
+    From HireXS Portal.
     """
 
     em = EmailMessage()
@@ -307,3 +325,35 @@ def sendSelectMail():
         "sent" : "true",
     }
     return jsonify(response)
+
+@app.route('/submit',methods=['GET','POST'])
+def save_to_mongodb():
+    email= str(request.args.get('email'))
+    score= request.args.get('score')
+    job_id= str(request.args.get('job_id')
+    client = pymongo.MongoClient("mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/")
+    db = client["test"]
+    # collection = db['testScore']
+    user_collection = db['users']
+    cvs_collection = db['cvs']
+
+    user = user_collection.find_one({'email': email})
+
+    if user:
+        user_id = user['_id']
+    else:
+        print("Candidate email not found.")
+        exit()
+    
+    update_result = cvs_collection.update_one(
+        {'jobId': job_id, 'owner': user_id},
+        {'$set': {'testScore': score}}
+    )
+
+    entry = {
+        'jobid': job_id,
+        'email': email,
+        'score': score
+    }
+    # collection.insert_one(entry)
+    client.close()
