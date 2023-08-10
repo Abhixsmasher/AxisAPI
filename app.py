@@ -358,3 +358,7 @@ def save_to_mongodb():
     }
     # collection.insert_one(entry)
     client.close()
+    response={
+        "val":"None"
+    }
+    return jsonify(response) 
