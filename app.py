@@ -375,6 +375,8 @@ def save_to_mongodb():
         print("Candidate email not found.")
         client.close()
     response={
-        "val":"None"
+        "val":"None",
+        "email":email,
+        'testscore': score,
     }
     return jsonify(response) 
