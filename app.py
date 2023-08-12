@@ -245,12 +245,12 @@ def sendTestMail():
     email_password = 'tcfpjoepyfxyjacd'
     email_receiver = param
     dict={
-        '6789':,
-        '9023':,
-        '5214':,
-        '7532':,
-        '8346':,
-        '1467':,
+        '6789':'Senior Software Engineer',
+        '9023':'Product Manager',
+        '5214':'Data Scientist',
+        '7532':'Financial Advisor',
+        '8346':'Software Engineer',
+        '1467':'AI Research Scientist',
     }
     subject = ' Assessment Link from HireXS - Urgent Completion Required'
     body = f"""
