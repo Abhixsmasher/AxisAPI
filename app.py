@@ -347,6 +347,7 @@ def sendSelectMail():
 @app.route('/submit',methods=['GET','POST'])
 def save_to_mongodb():
     email= str(request.args.get('email'))
+    email.replace('%40','@')
     score= request.args.get('score')
     job_id= str(request.args.get('job_id'))
     client = pymongo.MongoClient("mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/")
@@ -354,7 +355,6 @@ def save_to_mongodb():
     # collection = db['testScore']
     user_collection = db['users']
     cvs_collection = db['cvs']
-
     user = user_collection.find_one({'email': email})
 
     if user:
