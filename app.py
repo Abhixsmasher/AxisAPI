@@ -241,21 +241,22 @@ def gen_questions():
 def sendTestMail():
     param=str(request.args.get('email'))
     job_id=str(request.args.get('job_id'))
+    print(job_id)
     email_sender = 'hirexs71@gmail.com'
     email_password = 'tcfpjoepyfxyjacd'
     email_receiver = param
     link=''
-    if job_id == '6789':
+    if job_id == "6789":
         link = 'Senior Software Engineer'
-    elif job_id == '9023':
+    elif job_id == "9023":
         link = 'Product Manager'
-    elif job_id == '5214':
+    elif job_id == "5214":
         link = 'Data Scientist'
-    elif job_id == '7532':
+    elif job_id == "7532":
         link = 'Financial Advisor'
-    elif job_id == '8346':
+    elif job_id == "8346":
         link = 'Software Engineer'
-    elif job_id == '1467':
+    elif job_id == "1467":
         link = 'AI Research Scientist'
     else:
         link = 'Software Engineer Fresher'
