@@ -240,16 +240,25 @@ def gen_questions():
 # Set the subject and body of the email
 def sendTestMail():
     param=str(request.args.get('email'))
+    job_id=str(request.args.get('job_id'))
     email_sender = 'hirexs71@gmail.com'
     email_password = 'tcfpjoepyfxyjacd'
     email_receiver = param
+    dict={
+        '6789':,
+        '9023':,
+        '5214':,
+        '7532':,
+        '8346':,
+        '1467':,
+    }
     subject = ' Assessment Link from HireXS - Urgent Completion Required'
-    body = """
+    body = f"""
     Dear Candidate,
     I hope this email finds you well. We are excited to inform you that we have identified you as a promising candidate from HireXS.
     As part of our rigorous selection process, we kindly request your assistance in evaluating your suitability for this position.
     Please complete the below assesment within a day so that we can further the evaluation process.
-    Assesment Link:- 
+    Assesment Link:- {dict[job_id]}
     """
 
     em = EmailMessage()
