@@ -244,22 +244,29 @@ def sendTestMail():
     email_sender = 'hirexs71@gmail.com'
     email_password = 'tcfpjoepyfxyjacd'
     email_receiver = param
-    dict={
-        '6789':'Senior Software Engineer',
-        '9023':'Product Manager',
-        '5214':'Data Scientist',
-        '7532':'Financial Advisor',
-        '8346':'Software Engineer',
-        '1467':'AI Research Scientist',
-    }
+    link=''
+    if job_id == '6789':
+        link = 'Senior Software Engineer'
+    elif job_id == '9023':
+        link = 'Product Manager'
+    elif job_id == '5214':
+        link = 'Data Scientist'
+    elif job_id == '7532':
+        link = 'Financial Advisor'
+    elif job_id == '8346':
+        link = 'Software Engineer'
+    elif job_id == '1467':
+        link = 'AI Research Scientist'
+    else:
+        link = 'Software Engineer Fresher'
     subject = ' Assessment Link from HireXS - Urgent Completion Required'
     body = f"""
     Dear Candidate,
     I hope this email finds you well. We are excited to inform you that we have identified you as a promising candidate from HireXS.
     As part of our rigorous selection process, we kindly request your assistance in evaluating your suitability for this position.
     Please complete the below assesment within a day so that we can further the evaluation process.
-    Assesment Link:- {dict[job_id]}
-    """
+    Assesment Link:- {link}  
+    Remember to open the link in a new tab."""
 
     em = EmailMessage()
     em['From'] = email_sender
