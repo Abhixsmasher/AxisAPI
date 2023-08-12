@@ -247,19 +247,19 @@ def sendTestMail():
     email_receiver = param
     link=''
     if job_id == "6789":
-        link = 'Senior Software Engineer'
+        link = 'https://senior-software-engineer-bot-app-ixyu3x2ys72js3uwpnypgp.streamlit.app/'
     elif job_id == "9023":
-        link = 'Product Manager'
+        link = 'https://appuct-manager-bot-app-5ktvwc47vhuhwkhow4xdxt.streamlit.app/'
     elif job_id == "5214":
-        link = 'Data Scientist'
+        link = 'https://data-scientist-bot-app-txnu96cu868jnqsxmtcx57.streamlit.app/'
     elif job_id == "7532":
-        link = 'Financial Advisor'
+        link = 'https://financial-advisor-bot-app-nttgg5tjvjxup9wxiv6vzh.streamlit.app/'
     elif job_id == "8346":
-        link = 'Software Engineer'
+        link = 'https://software-engineer-bot-app-ec7xda7ny2wx7bilrgbztf.streamlit.app/'
     elif job_id == "1467":
-        link = 'AI Research Scientist'
+        link = 'https://ai-research-scientist-bot-app-n9ic9sbwabn92y9z5vjpdd.streamlit.app/'
     else:
-        link = 'Software Engineer Fresher'
+        link = 'https://software-engineer-bot-app-ec7xda7ny2wx7bilrgbztf.streamlit.app/'
     subject = ' Assessment Link from HireXS - Urgent Completion Required'
     body = f"""
     Dear Candidate,
