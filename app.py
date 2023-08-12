@@ -310,7 +310,7 @@ def sendSelectMail():
     subject = 'Congratulations on Your Selection for an Interview at Axis Bank!1'
     body = """
     Dear Candidate,
-    I am thrilled to inform you that after a thorough review of your application, we are impressed with your qualifications and experiences,
+    We are thrilled to inform you that after a thorough review of your application, we are impressed with your qualifications and experiences,
     and we would like to invite you for an interview at Axis Bank.
     Your application stood out among a competitive pool of candidates, and we believe your skills and background align well with what we are looking
     for in this position.
