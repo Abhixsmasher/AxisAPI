@@ -352,24 +352,16 @@ def save_to_mongodb():
     job_id= str(request.args.get('job_id'))
     client = pymongo.MongoClient("mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/")
     db = client["test"]
-    # collection = db['testScore']
     user_collection = db['users']
     cvs_collection = db['cvs']
     user = user_collection.find_one({'email': email})
-
+    
     if user:
         user_id = user['_id']
-        update_result = cvs_collection.update_one(
+        cvs_collection.update_one(
             {'jobId': job_id, 'owner': user_id},
-            {'$set': {'testScore': score}}
+            {"$set": {'testScore': score}}
         )
-
-        entry = {
-            'jobid': job_id,
-            'email': email,
-            'score': score
-        }
-    # collection.insert_one(entry)
         client.close()
     else:
         print("Candidate email not found.")
@@ -378,5 +370,7 @@ def save_to_mongodb():
         "val":"None",
         "email":email,
         'testscore': score,
+        'user_id':user_id,
+        'job_id':job_id,
     }
     return jsonify(response) 
