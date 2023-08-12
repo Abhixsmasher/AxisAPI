@@ -370,7 +370,6 @@ def save_to_mongodb():
         "val":"None",
         "email":email,
         'testscore': score,
-        'user_id':user_id,
         'job_id':job_id,
     }
     return jsonify(response) 
