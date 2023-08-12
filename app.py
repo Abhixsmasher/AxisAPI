@@ -156,7 +156,7 @@ def get_question_score(question,response):
     for i in range(len(response)):
         answers=answers+str(i)
         answers=answers+response[i]
-    prompt = "The question are: "+questions+" The answers are: "+answers+". Score all the responses combined out of 50 combined considering\
+    prompt = "The question are: "+questions+" The answers are: "+answers+". Score all the responses combined out of 10 combined considering\
     the answers specific to tech roles. JUST MENTION THE FINAL SCORE\
     AND NOTHING ELSE."
     answer= openai.Completion.create(
