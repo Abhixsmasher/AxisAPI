@@ -137,7 +137,7 @@ def generate_interview_questions(job_description):
     openai.api_key = os.environ["open_ai_key_1"]
 # Open the file in 'r+' mode (read and write). It will create the file if it doesn't exist.
 # If the file exists, it will open it for both reading and writing.
-    with open(file_path, 'r+') as file:
+    with open(file_path, 'a+') as file:
     # Read the existing content
         content = file.read()
         if content=="":
@@ -172,7 +172,7 @@ def get_question_score(question,response):
     openai.api_key = os.environ["open_ai_key_1"]
 # Open the file in 'r+' mode (read and write). It will create the file if it doesn't exist.
 # If the file exists, it will open it for both reading and writing.
-    with open(file_path, 'r+') as file:
+    with open(file_path, 'a+') as file:
     # Read the existing content
         content = file.read()
         if content=="":
@@ -246,7 +246,7 @@ def CV_handle():
 def paraphrase():
     file_path = "./lib/data/index.txt"
     openai.api_key = os.environ["open_ai_key_1"]
-    with open(file_path, 'r+') as file:
+    with open(file_path, 'a+') as file:
         content = file.read()
         if content=="":
             file.write(str(1))
