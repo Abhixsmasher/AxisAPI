@@ -154,10 +154,10 @@ def generate_interview_questions(job_description):
     return questions
 
 def get_question_score(question,response):
-     if(flag==True):
+    if(flag==True):
         openai.api_key = os.environ["open_ai_key_1"]
         flag=False
-     else:
+    else:
         openai.api_key = os.environ["open_ai_key_2"]
         flag=True
     questions=""
@@ -217,10 +217,10 @@ def CV_handle():
 
 @app.route('/Paraphrasejd',methods=['GET','POST'])
 def paraphrase():
-     if(flag==True):
+    if(flag==True):
         openai.api_key = os.environ["open_ai_key_1"]
         flag=False
-     else:
+    else:
         openai.api_key = os.environ["open_ai_key_2"]
         flag=True
     JD_text=str(request.args.get('description'))
