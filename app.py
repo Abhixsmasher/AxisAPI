@@ -142,15 +142,15 @@ def generate_interview_questions(job_description):
         content = file.read()
         if content=="":
             file.write(str(1))
-            break
+        else:
     # Modify the content as needed
-        content=int(content)
-        openai.api_key=keys[content]
+            content=int(content)
+            openai.api_key=keys[content]
     # Go back to the beginning of the file
-        file.seek(0)
-        modified_content=(content+1)%2
+            file.seek(0)
+            modified_content=(content+1)%2
     # Write the modified content back to the file
-        file.write(str(modified_content))
+            file.write(str(modified_content))
         file.close()
     prompt = f"Generate 5 tech interview questions, output each question with ### at start, for a role whose job description is:\n {job_description}."
     response = openai.Completion.create(
@@ -177,15 +177,15 @@ def get_question_score(question,response):
         content = file.read()
         if content=="":
             file.write(str(1))
-            break
+        else:
     # Modify the content as needed
-        content=int(content)
-        openai.api_key=keys[content]
+            content=int(content)
+            openai.api_key=keys[content]
     # Go back to the beginning of the file
-        file.seek(0)
-        modified_content=(content+1)%2
+            file.seek(0)
+            modified_content=(content+1)%2
     # Write the modified content back to the file
-        file.write(str(modified_content))
+            file.write(str(modified_content))
         file.close()
     questions=""
     for i in range(len(question)):
@@ -250,12 +250,12 @@ def paraphrase():
         content = file.read()
         if content=="":
             file.write(str(1))
-            break
-        content=int(content)
-        openai.api_key=keys[content]
-        file.seek(0)
-        modified_content=(content+1)%2
-        file.write(str(modified_content))
+        else:
+            content=int(content)
+            openai.api_key=keys[content]
+            file.seek(0)
+            modified_content=(content+1)%2
+            file.write(str(modified_content))
         file.close()
     JD_text=str(request.args.get('description'))
     role=str(request.args.get('role'))
