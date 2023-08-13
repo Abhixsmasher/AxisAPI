@@ -133,7 +133,7 @@ def url_to_id(url):
     return x[5]
 
 def generate_interview_questions(job_description):
-    file_path = "index.txt"
+    file_path = "./lib/data/index.txt"
     openai.api_key = os.environ["open_ai_key_1"]
 # Open the file in 'r+' mode (read and write). It will create the file if it doesn't exist.
 # If the file exists, it will open it for both reading and writing.
@@ -168,7 +168,7 @@ def generate_interview_questions(job_description):
     return questions
 
 def get_question_score(question,response):
-    file_path = "index.txt"
+    file_path = "./lib/data/index.txt"
     openai.api_key = os.environ["open_ai_key_1"]
 # Open the file in 'r+' mode (read and write). It will create the file if it doesn't exist.
 # If the file exists, it will open it for both reading and writing.
@@ -244,7 +244,7 @@ def CV_handle():
 
 @app.route('/Paraphrasejd',methods=['GET','POST'])
 def paraphrase():
-    file_path = "index.txt"
+    file_path = "./lib/data/index.txt"
     openai.api_key = os.environ["open_ai_key_1"]
     with open(file_path, 'r+') as file:
         content = file.read()
