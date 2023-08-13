@@ -101,7 +101,7 @@ tier2=['IIIT Bangalore',
 'NIT Uttarakhand',
 'NIT Andhra Pradesh']
 
-flag=True
+openai.api_key = os.environ["open_ai_key_1"]
 
 def tokenize(txt):
     tokens= re.split('\W+', txt)
@@ -132,12 +132,6 @@ def url_to_id(url):
     return x[5]
 
 def generate_interview_questions(job_description):
-    if(flag==True):
-        openai.api_key = os.environ["open_ai_key_1"]
-        flag=False
-    else:
-        openai.api_key = os.environ["open_ai_key_2"]
-        flag=True
     prompt = f"Generate 5 tech interview questions, output each question with ### at start, for a role whose job description is:\n {job_description}."
     response = openai.Completion.create(
         engine="text-davinci-002",  # Use appropriate engine (GPT-3) or any upgraded version
@@ -154,12 +148,6 @@ def generate_interview_questions(job_description):
     return questions
 
 def get_question_score(question,response):
-    if(flag==True):
-        openai.api_key = os.environ["open_ai_key_1"]
-        flag=False
-    else:
-        openai.api_key = os.environ["open_ai_key_2"]
-        flag=True
     questions=""
     for i in range(len(question)):
         questions=questions+str(i)
@@ -217,12 +205,6 @@ def CV_handle():
 
 @app.route('/Paraphrasejd',methods=['GET','POST'])
 def paraphrase():
-    if(flag==True):
-        openai.api_key = os.environ["open_ai_key_1"]
-        flag=False
-    else:
-        openai.api_key = os.environ["open_ai_key_2"]
-        flag=True
     JD_text=str(request.args.get('description'))
     role=str(request.args.get('role'))
     prompt="For the role of "+role+" and the following JD, rewrite it to suit better to the role and \
@@ -281,7 +263,7 @@ def sendTestMail():
     subject = ' Assessment Link from HireXS - Urgent Completion Required'
     body = f"""
     Dear Candidate,
-    I hope this email finds you well. We are excited to inform you that we have identified you as a promising candidate from HireXS.
+    We hope this email finds you well. We are excited to inform you that we have identified you as a promising candidate from HireXS.
     As part of our rigorous selection process, we kindly request your assistance in evaluating your suitability for this position.
     Please complete the below assesment within a day so that we can further the evaluation process.
     Assesment Link:- {link}  
