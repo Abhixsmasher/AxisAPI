@@ -101,7 +101,7 @@ tier2=['IIIT Bangalore',
 'NIT Uttarakhand',
 'NIT Andhra Pradesh']
 
-keys=[os.enviorn["open_ai_key_1"],os.enviorn["open_ai_key_2"]]
+keys=[os.environ["open_ai_key_1"],os.environ["open_ai_key_2"]]
 openai.api_key = os.environ["open_ai_key_1"]
 
 def tokenize(txt):
