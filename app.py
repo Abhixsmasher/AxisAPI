@@ -101,7 +101,8 @@ tier2=['IIIT Bangalore',
 'NIT Uttarakhand',
 'NIT Andhra Pradesh']
 
-openai.api_key = os.environ["open_ai_key"]
+keys=[os.enviorn["open_ai_key_1"],os.enviorn["open_ai_key_2"]]
+openai.api_key = os.environ["open_ai_key_1"]
 
 def tokenize(txt):
     tokens= re.split('\W+', txt)
@@ -132,6 +133,25 @@ def url_to_id(url):
     return x[5]
 
 def generate_interview_questions(job_description):
+    file_path = "index.txt"
+    openai.api_key = os.environ["open_ai_key_1"]
+# Open the file in 'r+' mode (read and write). It will create the file if it doesn't exist.
+# If the file exists, it will open it for both reading and writing.
+    with open(file_path, 'r+') as file:
+    # Read the existing content
+        content = file.read()
+        if content=="":
+            file.write(str(1))
+            break
+    # Modify the content as needed
+        content=int(content)
+        openai.api_key=keys[content]
+    # Go back to the beginning of the file
+        file.seek(0)
+        modified_content=(content+1)%2
+    # Write the modified content back to the file
+        file.write(str(modified_content))
+        file.close()
     prompt = f"Generate 5 tech interview questions, output each question with ### at start, for a role whose job description is:\n {job_description}."
     response = openai.Completion.create(
         engine="text-davinci-002",  # Use appropriate engine (GPT-3) or any upgraded version
@@ -148,6 +168,25 @@ def generate_interview_questions(job_description):
     return questions
 
 def get_question_score(question,response):
+    file_path = "index.txt"
+    openai.api_key = os.environ["open_ai_key_1"]
+# Open the file in 'r+' mode (read and write). It will create the file if it doesn't exist.
+# If the file exists, it will open it for both reading and writing.
+    with open(file_path, 'r+') as file:
+    # Read the existing content
+        content = file.read()
+        if content=="":
+            file.write(str(1))
+            break
+    # Modify the content as needed
+        content=int(content)
+        openai.api_key=keys[content]
+    # Go back to the beginning of the file
+        file.seek(0)
+        modified_content=(content+1)%2
+    # Write the modified content back to the file
+        file.write(str(modified_content))
+        file.close()
     questions=""
     for i in range(len(question)):
         questions=questions+str(i)
@@ -205,6 +244,19 @@ def CV_handle():
 
 @app.route('/Paraphrasejd',methods=['GET','POST'])
 def paraphrase():
+    file_path = "index.txt"
+    openai.api_key = os.environ["open_ai_key_1"]
+    with open(file_path, 'r+') as file:
+        content = file.read()
+        if content=="":
+            file.write(str(1))
+            break
+        content=int(content)
+        openai.api_key=keys[content]
+        file.seek(0)
+        modified_content=(content+1)%2
+        file.write(str(modified_content))
+        file.close()
     JD_text=str(request.args.get('description'))
     role=str(request.args.get('role'))
     prompt="For the role of "+role+" and the following JD, rewrite it to suit better to the role and \
@@ -307,7 +359,7 @@ def sendSelectMail():
     email_receiver = param
 
 # Set the subject and body of the email
-    subject = 'Congratulations on Your Selection for an Interview at Axis Bank!1'
+    subject = 'Congratulations on Your Selection for an Interview at Axis Bank!'
     body = """
     Dear Candidate,
     We are thrilled to inform you that after a thorough review of your application, we are impressed with your qualifications and experiences,
