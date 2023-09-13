@@ -222,7 +222,7 @@ def email_post():
       "metadata": None
     }
     #response=requests.post('https://api.bannerbear.com/v2/images',
-                      json=data,headers=headers)
+    #                  json=data,headers=headers)
     #gen_id=response.json()['uid']
     gen_id='nyLXxdvaNQgpEoD5Y9wePZm1E'
     link='https://api.bannerbear.com/v2/images/'+gen_id
