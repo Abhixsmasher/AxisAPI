@@ -221,10 +221,11 @@ def email_post():
       "transparent": False,
       "metadata": None
     }
-    #response=requests.post('https://api.bannerbear.com/v2/images',
-    #                  json=data,headers=headers)
-    #gen_id=response.json()['uid']
-    gen_id='nyLXxdvaNQgpEoD5Y9wePZm1E'
+    response=requests.post('https://api.bannerbear.com/v2/images',
+                      json=data,headers=headers)
+    time.sleep(20)
+    gen_id=response.json()['uid']
+    #gen_id='nyLXxdvaNQgpEoD5Y9wePZm1E'
     link='https://api.bannerbear.com/v2/images/'+gen_id
     response=requests.get(link,headers=headers)
     response_json=response.json()
@@ -258,11 +259,12 @@ def email_post():
     msg.attach(MIMEText(body, 'plain'))
     server.sendmail(email_username, email_to, msg.as_string())
     server.quit()
-    os.remove('./lib/data/img.jpg')
+    os.remove('img.jpg')
     response={
         'status': 'success',
     }
     return jsonify(response)
+    
 @app.route('/CV',methods=['GET'])
 def CV_handle():
     JD_text=str(request.args.get('description'))
@@ -293,7 +295,6 @@ def CV_handle():
         'email' : email,
         'CV_score' : final_score
     }
-    
     return jsonify(response)
 
 @app.route('/Paraphrasejd',methods=['GET','POST'])
