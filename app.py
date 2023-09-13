@@ -186,20 +186,20 @@ def email_post():
         {
           "name": "additional_text",
           "text": request.args.get('additionaltext'),
-          "color": null,
-          "background": null
+          "color": None,
+          "background": None
         },
         {
           "name": "offer_title",
           "text": request.args.get('offertitle'),
-          "color": null,
-          "background": null
+          "color": None,
+          "background": None
         },
         {
           "name": "subtitle",
           "text": request.args.get('subtitle'),
-          "color": null,
-          "background": null
+          "color": None,
+          "background": None
         },
         {
           "name": "offer_image",
@@ -208,17 +208,17 @@ def email_post():
         {
           "name": "validity_date",
           "text": request.args.get('valdate'),
-          "color": null,
-          "background": null
+          "color": None,
+          "background": None
         },
         {
           "name": "Company logo",
           "image_url": request.args.get('companyimg')
         }
       ],
-      "webhook_url": null,
-      "transparent": false,
-      "metadata": null
+      "webhook_url": None,
+      "transparent": False,
+      "metadata": None
     }
     response=requests.post('https://api.bannerbear.com/v2/images',
                       json=data,headers=headers)
