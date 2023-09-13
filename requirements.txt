@@ -7,4 +7,3 @@ nltk
 openai
 googledrivedownloader
 pymongo
-PIL
