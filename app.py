@@ -230,7 +230,7 @@ def email_post():
     f = open('img.jpg','wb')
     f.write(data)
     f.close()
-    receivers_mail = request.args.get('receivers')
+    receivers_mail = request.args.getlist('receivers')
     email_to = ", ".join(receivers_mail)
     file_path = 'img.jpg'
     email_subject = request.args.get('offertitle')
