@@ -251,6 +251,7 @@ def email_post():
     msg['Subject'] = email_subject
     with open(file_path, 'rb') as f:
         file_data = f.read()
+        file_name = f.name.split('/')[-1]
         attachment = MIMEApplication(file_data, name=file_name)
         msg.attach(attachment)
     body = 'Find attractive offers for you below'
