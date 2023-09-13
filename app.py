@@ -221,13 +221,15 @@ def email_post():
       "transparent": False,
       "metadata": None
     }
-    response=requests.post('https://api.bannerbear.com/v2/images',
+    #response=requests.post('https://api.bannerbear.com/v2/images',
                       json=data,headers=headers)
-    gen_id=response.json()['uid']
-    response=requests.get(f'https://api.bannerbear.com/v2/images/{gen_id}',headers=headers)
+    #gen_id=response.json()['uid']
+    gen_id='nyLXxdvaNQgpEoD5Y9wePZm1E'
+    link='https://api.bannerbear.com/v2/images/'+gen_id
+    response=requests.get(link,headers=headers)
     response_json=response.json()
-    img_url=response_json['image_url']
-    data = requests.get(img_url).content
+    img_down=response_json['image_url']
+    data = requests.get(img_down).content
     f = open('img.jpg','wb')
     f.write(data)
     f.close()
