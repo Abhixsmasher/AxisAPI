@@ -223,7 +223,7 @@ def email_post():
     }
     response=requests.post('https://api.bannerbear.com/v2/images',
                       json=data,headers=headers)
-    time.sleep(20)
+    time.sleep(3)
     gen_id=response.json()['uid']
     #gen_id='nyLXxdvaNQgpEoD5Y9wePZm1E'
     link='https://api.bannerbear.com/v2/images/'+gen_id
@@ -231,6 +231,7 @@ def email_post():
     response_json=response.json()
     img_down=response_json['image_url']
     data = requests.get(img_down).content
+    time.sleep(3)
     f = open('img.jpg','wb')
     f.write(data)
     f.close()
