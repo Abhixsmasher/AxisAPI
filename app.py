@@ -174,7 +174,7 @@ def get_question_score(question,response):
     rr = re.findall("[+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", score)
     return rr[0]
 
-@app.route('/InstaPost',methods=['GET','POST'])
+@app.route('/emailpost',methods=['GET','POST'])
 def email_post():
     api_key = "bb_pr_ed5ba364d7e725f3744ea0f1fb2556"
     headers = {
