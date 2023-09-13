@@ -22,6 +22,9 @@ import ssl
 import pymongo
 from email.message import EmailMessage
 from PIL import Image
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
 
 app = Flask(__name__)
 
@@ -172,7 +175,7 @@ def get_question_score(question,response):
     return rr[0]
 
 @app.route('/InstaPost',methods=['GET','POST'])
-def Insta_Post():
+def email_post():
     api_key = "bb_pr_ed5ba364d7e725f3744ea0f1fb2556"
     headers = {
       'Authorization' : f"Bearer {api_key}"
@@ -227,9 +230,35 @@ def Insta_Post():
     f = open('img.jpg','wb')
     f.write(data)
     f.close()
-    
+    receivers_mail = request.args.get('receivers')
+    email_to = ", ".join(receivers_mail)
+    file_path = 'img.jpg'
+    email_subject = request.args.get('offertitle')
+    email_host = 'smtp.gmail.com'
+    email_port = 587
+    email_username = 'hirexs635@gmail.com'
+    email_password = 'jxjyquwhgmswhvax'
+    server = smtplib.SMTP(email_host, email_port)
+    server.ehlo()
+    server.starttls()
+    server.login(email_username, email_password)
+    msg = MIMEMultipart()
+    msg['From'] = email_username
+    msg['To'] = email_to
+    msg['Subject'] = email_subject
+    with open(file_path, 'rb') as f:
+        file_data = f.read()
+        attachment = MIMEApplication(file_data, name=file_name)
+        msg.attach(attachment)
+    body = 'Find attractive offers for you below'
+    msg.attach(MIMEText(body, 'plain'))
+    server.sendmail(email_username, email_to, msg.as_string())
+    server.quit()
     os.remove('./lib/data/img.jpg')
-    
+    response={
+        'status': 'success',
+    }
+    return jsonify(response)
 @app.route('/CV',methods=['GET'])
 def CV_handle():
     JD_text=str(request.args.get('description'))
