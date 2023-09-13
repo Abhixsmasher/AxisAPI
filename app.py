@@ -21,6 +21,7 @@ import smtplib
 import ssl
 import pymongo
 from email.message import EmailMessage
+from PIL import Image
 
 app = Flask(__name__)
 
@@ -170,6 +171,65 @@ def get_question_score(question,response):
     rr = re.findall("[+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", score)
     return rr[0]
 
+@app.route('/InstaPost',methods=['GET','POST'])
+def Insta_Post():
+    api_key = "bb_pr_ed5ba364d7e725f3744ea0f1fb2556"
+    headers = {
+      'Authorization' : f"Bearer {api_key}"
+    }
+    data={
+      "template": "20KwqnDEry0Qbl17dY",
+      "modifications": [
+        {
+          "name": "additional_text",
+          "text": request.args.get('additionaltext'),
+          "color": null,
+          "background": null
+        },
+        {
+          "name": "offer_title",
+          "text": request.args.get('offertitle'),
+          "color": null,
+          "background": null
+        },
+        {
+          "name": "subtitle",
+          "text": request.args.get('subtitle'),
+          "color": null,
+          "background": null
+        },
+        {
+          "name": "offer_image",
+          "image_url": request.args.get('productimg'),
+        },
+        {
+          "name": "validity_date",
+          "text": request.args.get('valdate'),
+          "color": null,
+          "background": null
+        },
+        {
+          "name": "Company logo",
+          "image_url": request.args.get('companyimg')
+        }
+      ],
+      "webhook_url": null,
+      "transparent": false,
+      "metadata": null
+    }
+    response=requests.post('https://api.bannerbear.com/v2/images',
+                      json=data,headers=headers)
+    gen_id=response.json()['uid']
+    response=requests.get(f'https://api.bannerbear.com/v2/images/{gen_id}',headers=headers)
+    response_json=response.json()
+    img_url=response_json['image_url']
+    data = requests.get(img_url).content
+    f = open('img.jpg','wb')
+    f.write(data)
+    f.close()
+    
+    os.remove('./lib/data/img.jpg')
+    
 @app.route('/CV',methods=['GET'])
 def CV_handle():
     JD_text=str(request.args.get('description'))
