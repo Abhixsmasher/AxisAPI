@@ -198,6 +198,7 @@ def csvanalyze():
     response={
         'answer': strategies,
     }
+    os.remove('data.csv')
     return jsonify(response)
     
 @app.route('/emailpost',methods=['GET','POST'])
