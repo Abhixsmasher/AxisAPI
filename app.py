@@ -204,8 +204,9 @@ def csvanalyze():
         max_tokens=500,
     )
     strategies=gptquery['choices'][0]['text']
+    actual=json.loads(strategies)
     response={
-        'answer': strategies,
+        'answer': actual,
     }
     os.remove('./lib/data/data.csv')
     return jsonify(response)
