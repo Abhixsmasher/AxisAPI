@@ -183,6 +183,7 @@ def get_question_score(question,response):
 @app.route('/csvanalyze',methods=['GET','POST'])
 def csvanalyze():
     csv=str(request.args.get('csv'))
+    query=str(request.args.get('query'))
     ID=url_to_id(csv)
     gdd.download_file_from_google_drive(file_id=ID, dest_path='./lib/data/data.csv')
     agent = create_csv_agent(
@@ -191,7 +192,7 @@ def csvanalyze():
     verbose=True,
     agent_type=AgentType.OPENAI_FUNCTIONS,
     )
-    strategies=agent.run('Analyse the data and generate top 3 strategies to increase total satisfaction AND MENTION SPECIFIC DISHES OR PRODUCT ID \
+    strategies=agent.run(f'Analyse the data and generate top 3 strategies to {query} AND MENTION SPECIFIC PRODUCTS \
     that are to be affected in 10 words each. Also display the chance of success for each out of 100%. The strategies should \
     be like the following example:\
     1. Increase visibility of low-selling products (Item_Visibility) by placing them in prominent areas. Chance of success: 80%\
