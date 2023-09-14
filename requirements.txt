@@ -9,4 +9,4 @@ googledrivedownloader
 pymongo
 pillow
 pydantic==1.10.9
-langchain
+langchain==0.0.288
