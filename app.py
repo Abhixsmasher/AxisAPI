@@ -192,11 +192,18 @@ def csvanalyze():
     verbose=True,
     agent_type=AgentType.OPENAI_FUNCTIONS,
     )
-    strategies=agent.run(f'Analyse the data and generate top 3 strategies to {query} AND MENTION SPECIFIC PRODUCTS \
+    answer=agent.run(f'Analyse the data and generate top 3 strategies to {query} AND MENTION SPECIFIC PRODUCTS \
     that are to be affected in 10 words each. Also display the chance of success for each out of 100%. The strategies should \
     be like the following example:\
     1. Increase visibility of low-selling products (Item_Visibility) by placing them in prominent areas. Chance of success: 80%\
        - Products: FDX07, NCD19, DRI11')
+    prompt=f"For the given text :{answer} , separate each strategy into a json type format with each strategy as an element of list and with products affected and chance of succes as sepatate elements of that element."
+    gptquery = openai.Completion.create(
+        engine="text-davinci-002",  # Use appropriate engine (GPT-3) or any upgraded version
+        prompt=prompt,
+        max_tokens=500,
+    )
+    strategies=gptquery['choices'][0]['text']
     response={
         'answer': strategies,
     }
