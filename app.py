@@ -183,10 +183,10 @@ def get_question_score(question,response):
 def csvanalyze():
     csv=str(request.args.get('csv'))
     ID=url_to_id(csv)
-    gdd.download_file_from_google_drive(file_id=ID, dest_path='data.csv')
+    gdd.download_file_from_google_drive(file_id=ID, dest_path='./lib/data/data.csv')
     agent = create_csv_agent(
     ChatOpenAI(temperature=0,openai_api_key=os.environ["open_ai_key_1"], model="gpt-3.5-turbo-0613"),
-    'data.csv',
+    './lib/data/data.csv',
     verbose=True,
     agent_type=AgentType.OPENAI_FUNCTIONS,
     )
