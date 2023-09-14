@@ -26,6 +26,10 @@ from PIL import Image
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
+from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
+from langchain.agents.agent_types import AgentType
+from langchain.agents import create_csv_agent
 
 app = Flask(__name__)
 
@@ -174,7 +178,28 @@ def get_question_score(question,response):
     score = answer['choices'][0]['text']
     rr = re.findall("[+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", score)
     return rr[0]
-
+    
+@app.route('/csvanalyze',methods=['GET','POST'])
+def csvanalyze():
+    csv=str(request.args.get('csv'))
+    ID=url_to_id(csv)
+    gdd.download_file_from_google_drive(file_id=ID, dest_path='data.csv')
+    agent = create_csv_agent(
+    ChatOpenAI(temperature=0,openai_api_key=os.environ["open_ai_key_1"], model="gpt-3.5-turbo-0613"),
+    'data.csv',
+    verbose=True,
+    agent_type=AgentType.OPENAI_FUNCTIONS,
+    )
+    strategies=agent.run('Analyse the data and generate top 3 strategies to increase total satisfaction AND MENTION SPECIFIC DISHES OR PRODUCT ID \
+    that are to be affected in 10 words each. Also display the chance of success for each out of 100%. The strategies should \
+    be like the following example:\
+    1. Increase visibility of low-selling products (Item_Visibility) by placing them in prominent areas. Chance of success: 80%\
+       - Products: FDX07, NCD19, DRI11')
+    response={
+        'answer': strategies,
+    }
+    return jsonify(response)
+    
 @app.route('/emailpost',methods=['GET','POST'])
 def email_post():
     api_key = "bb_pr_ed5ba364d7e725f3744ea0f1fb2556"
