@@ -9,6 +9,6 @@ googledrivedownloader
 pymongo
 pillow
 pydantic==1.10.9
-langchain[all]
+langchain[llm]
 pandas
 tabulate
