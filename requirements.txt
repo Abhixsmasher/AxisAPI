@@ -11,3 +11,4 @@ pillow
 pydantic==1.10.9
 langchain
 pandas
+tabulate
