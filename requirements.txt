@@ -8,3 +8,4 @@ openai
 googledrivedownloader
 pymongo
 pillow
+langchain
