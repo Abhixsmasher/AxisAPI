@@ -260,8 +260,25 @@ def csvanalyze():
     )
     strategies=gptquery['choices'][0]['text']
     actual=json.loads(strategies)
+    client = pymongo.MongoClient("mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/")  # Replace with your MongoDB connection URL
+    db_name = "test"
+    collection_name = "strategy"
+
+# Access the database
+    db = client[db_name]
+
+# Drop the existing collection if it exists
+    if collection_name in db.list_collection_names():
+        db[collection_name].drop()
+
+# Create a new collection and insert the data
+    collection = db[collection_name]
+    collection.insert_one(actual)
+
+# Close the MongoDB connection
+    client.close()
     response={
-        'answer': actual,
+        'status': 'success',
     }
     os.remove('./lib/data/data.csv')
     return jsonify(response)
