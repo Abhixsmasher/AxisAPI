@@ -207,6 +207,25 @@ def plotcsv():
             'type': 'bar'
         }
         plot_data[f'correlation_{i + 1}'] = data
+    client = pymongo.MongoClient("mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/")  # Replace with your MongoDB connection URL
+
+# Specify the database and collection names
+    db_name = "taurus"
+    collection_name = "graphs"
+
+# Access the database
+    db = client[db_name]
+
+# Drop the existing collection if it exists
+    if collection_name in db.list_collection_names():
+        db[collection_name].drop()
+
+# Create a new collection and insert the data
+    collection = db[collection_name]
+    collection.insert_one(data)
+
+# Close the MongoDB connection
+    client.close()
     os.remove('./lib/data/data.csv')
     return jsonify(plot_data)
 
