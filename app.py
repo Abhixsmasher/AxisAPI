@@ -337,7 +337,6 @@ def email_post():
                       json=data,headers=headers)
     time.sleep(3)
     gen_id=response.json()['uid']
-    #gen_id='nyLXxdvaNQgpEoD5Y9wePZm1E'
     link='https://api.bannerbear.com/v2/images/'+gen_id
     response=requests.get(link,headers=headers)
     response_json=response.json()
