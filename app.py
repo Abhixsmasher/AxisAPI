@@ -207,6 +207,7 @@ def plotcsv():
             'type': 'bar'
         }
         plot_data[f'correlation_{i + 1}'] = data
+    plot_data['ID']=111
     client = pymongo.MongoClient("mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/")  # Replace with your MongoDB connection URL
 
 # Specify the database and collection names
@@ -222,12 +223,15 @@ def plotcsv():
 
 # Create a new collection and insert the data
     collection = db[collection_name]
-    collection.insert_one(data)
+    collection.insert_one(plot_data)
 
 # Close the MongoDB connection
     client.close()
     os.remove('./lib/data/data.csv')
-    return jsonify(plot_data)
+    final={
+        'status':'success'
+    }
+    return jsonify(final)
 
 @app.route('/csvanalyze',methods=['GET','POST'])
 def csvanalyze():
