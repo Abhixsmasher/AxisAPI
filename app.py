@@ -187,7 +187,7 @@ def plotcsv():
     gdd.download_file_from_google_drive(file_id=ID, dest_path='./lib/data/data.csv')
     time.sleep(3)
     df = pd.read_csv('./lib/data/data.csv')
-    numerical_columns = df.select_dtypes(include=['number']).columns
+    numerical_columns = df.select_dtypes(include='number')
     numerical_df = df[numerical_columns]
     correlations = numerical_df.corr()
     top_correlations = correlations.unstack().sort_values(ascending=False).drop_duplicates()[:3]
