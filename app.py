@@ -180,6 +180,29 @@ def get_question_score(question,response):
     rr = re.findall("[+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", score)
     return rr[0]
     
+@app.route('/plot',methods=['GET','POST'])
+def plotcsv():
+    csv=str(request.args.get('csv'))
+    ID=url_to_id(csv)
+    gdd.download_file_from_google_drive(file_id=ID, dest_path='./lib/data/data.csv')
+    df = pd.read_csv('./lib/data/data.csv')
+    correlations = df.corr()
+    top_correlations = correlations.unstack().sort_values(ascending=False).drop_duplicates()[:3]
+    plot_data = {}
+    for i, (param1, param2) in enumerate(top_correlations.index):
+        grouped = df.groupby(param1).mean().reset_index()
+        data = {
+            'x': grouped[param1].tolist(),
+            'y': grouped[param2].tolist(),
+            'xlabel': param1,
+            'ylabel': param2,
+            'title': f"{param2} vs {param1}",
+            'type': 'bar'
+        }
+        plot_data[f'correlation_{i + 1}'] = data
+    os.remove('./lib/data/data.csv')
+    return jsonify(plot_data)
+
 @app.route('/csvanalyze',methods=['GET','POST'])
 def csvanalyze():
     csv=str(request.args.get('csv'))
