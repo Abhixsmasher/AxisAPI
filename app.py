@@ -260,10 +260,11 @@ def csvanalyze():
     )
     strategies=gptquery['choices'][0]['text']
     actual=json.loads(strategies)
+    print(actual)
     client = pymongo.MongoClient("mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/")  # Replace with your MongoDB connection URL
     db_name = "test"
     collection_name = "strategy"
-
+    
 # Access the database
     db = client[db_name]
 
