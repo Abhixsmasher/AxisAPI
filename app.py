@@ -211,7 +211,7 @@ def plotcsv():
     client = pymongo.MongoClient("mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/")  # Replace with your MongoDB connection URL
 
 # Specify the database and collection names
-    db_name = "taurus"
+    db_name = "test"
     collection_name = "graphs"
 
 # Access the database
