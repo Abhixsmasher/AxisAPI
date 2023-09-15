@@ -266,7 +266,7 @@ def csvanalyze():
     }
     client = pymongo.MongoClient("mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/")  # Replace with your MongoDB connection URL
     db_name = "test"
-    collection_name = "strategy"
+    collection_name = "strats"
     
 # Access the database
     db = client[db_name]
