@@ -261,6 +261,9 @@ def csvanalyze():
     strategies=gptquery['choices'][0]['text']
     actual=json.loads(strategies)
     print(actual)
+    mong_dict={
+        "strategies" : actual
+    }
     client = pymongo.MongoClient("mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/")  # Replace with your MongoDB connection URL
     db_name = "test"
     collection_name = "strategy"
@@ -274,7 +277,7 @@ def csvanalyze():
 
 # Create a new collection and insert the data
     collection = db[collection_name]
-    collection.insert_one(actual)
+    collection.insert_one(mong_dict)
 
 # Close the MongoDB connection
     client.close()
