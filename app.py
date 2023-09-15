@@ -185,6 +185,7 @@ def plotcsv():
     csv=str(request.args.get('csv'))
     ID=url_to_id(csv)
     gdd.download_file_from_google_drive(file_id=ID, dest_path='./lib/data/data.csv')
+    time.sleep(3)
     df = pd.read_csv('./lib/data/data.csv')
     numerical_columns = df.select_dtypes(include=['number']).columns
     numerical_df = df[numerical_columns]
@@ -211,6 +212,7 @@ def csvanalyze():
     query=str(request.args.get('query'))
     ID=url_to_id(csv)
     gdd.download_file_from_google_drive(file_id=ID, dest_path='./lib/data/data.csv')
+    time.sleep(3)
     agent = create_csv_agent(
     ChatOpenAI(temperature=0,openai_api_key=os.environ["open_ai_key_1"], model="gpt-3.5-turbo-0613"),
     './lib/data/data.csv',
@@ -222,6 +224,7 @@ def csvanalyze():
     be like the following example:\
     1. Increase visibility of low-selling products (Item_Visibility) by placing them in prominent areas. Chance of success: 80%\
        - Products: FDX07, NCD19, DRI11')
+    time.sleep(3)
     prompt=f"For the given text :{answer} , separate each strategy into a json type format with each strategy as an element of list and with products affected and chance of succes as sepatate elements of that element."
     gptquery = openai.Completion.create(
         engine="text-davinci-002",  # Use appropriate engine (GPT-3) or any upgraded version
