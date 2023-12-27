@@ -114,6 +114,100 @@ tier2=['IIIT Bangalore',
 
 openai.api_key = os.environ["open_ai_key_1"]
 
+prompt_medical=f"""
+    The details for going flights are:
+    {going_flights}
+    
+    The details for coming back flights are:
+    {coming_flights}
+    
+    The hotel details are:
+    {hotels}
+    
+    The details are given to you in the form of a python list of dictionaries. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a MEDICAL TREATMENT TRIP package using one of these flights and and one of these hotels for {days} days. 
+    Now what I want you to do is create 2 such packages and describe them in human text. 
+    Use around 100 words to describe EACH package. 
+    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
+    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
+    MAKE SURE YOU ELABORATE ON THE EXCLUSIVE MEDICAL FACILITIES THE DESTINATION HAS TO OFFER.
+    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
+
+
+    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
+    """
+
+prompt_business=f"""
+    The details for going flights are:
+    {going_flights}
+    
+    The details for coming back flights are:
+    {coming_flights}
+    
+    The hotel details are:
+    {hotels}
+    
+    The details are given to you in the form of a python list of dictionaries. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a BUSINESS TRIP package using one of these flights and and one of these hotels for {days} days. 
+    Now what I want you to do is create 2 such packages and describe them in human text. 
+    Use around 100 words to describe EACH package. 
+    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
+    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
+    MAKE SURE YOU ELABORATE ON HOW THE DESTINATION WOULD BE HELPFUL IN BUSINESS MEETINGS AND THE BUSINESS OPPORTUNITIES IT HAS TO OFFER.
+    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
+
+
+    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
+    """
+
+prompt_vacation=f"""
+    The details for going flights are:
+    {going_flights}
+    
+    The details for coming back flights are:
+    {coming_flights}
+    
+    The hotel details are:
+    {hotels}
+    
+    The details are given to you in the form of a python list of dictionaries. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination holiday vacation package using one of these flights and and one of these hotels for {days} days. 
+    Now what I want you to do is create 2 such packages and describe them in human text. 
+    Use around 100 words to describe EACH package. 
+    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
+    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
+    MAKE SURE YOU ELABORATE ON THE EXCLUSIVE TOURISM SPOTS AND FACILITIES THE CITY HAS TO OFFER.
+    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
+    USE EMOJIS EXTENSIVELY IN THE HEADING AND DESCRIPTION ALSO
+
+
+    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
+    """
+
+prompt_weddings=f"""
+    The details for going flights are:
+    {going_flights}
+    
+    The details for coming back flights are:
+    {coming_flights}
+    
+    The hotel details are:
+    {hotels}
+    
+    The details are given to you in the form of a python list of dictionaries. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination wedding package using one of these flights and and one of these hotels for {days} days. 
+    Now what I want you to do is create 2 such packages and describe them in human text. 
+    Use around 100 words to describe EACH package. 
+    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
+    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
+    MAKE SURE YOU ELABORATE ON THE EXCLUSIVE WEDDING FACILITIES THE CITY HAS TO OFFER.
+    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
+    USE EMOJIS EXTENSIVELY IN THE HEADING AND DESCRIPTION ALSO
+
+
+    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
+    """
+
 def tokenize(txt):
     tokens= re.split('\W+', txt)
     return tokens
@@ -158,6 +252,70 @@ def generate_interview_questions(job_description):
     questions = [choice['text'] for choice in response['choices']]
     return questions
 
+def extract_paragraphs_as_json(text):
+    lines = text.split('\n')
+
+    # Initialize variables
+    paragraphs = []
+    current_paragraph = None
+
+    for line in lines:
+        line = line.strip()
+        if line:
+            if line.startswith('Heading'):
+                # Start a new paragraph
+                if current_paragraph:
+                    paragraphs.append(current_paragraph)
+
+                # Initialize a new paragraph with the heading
+                current_paragraph = {'heading': line, 'content': []}
+            elif current_paragraph:
+                # Add line to the current paragraph's content
+                current_paragraph['content'].append(line)
+
+    # Add the last paragraph
+    if current_paragraph:
+        paragraphs.append(current_paragraph)
+
+    return json.dumps(paragraphs, indent=2)
+
+def parse_package_string(package_string):
+    lines = package_string.split('\n')
+
+    flights = []
+    hotel = {}
+    estimate_cost = {}
+
+    current_flight = None
+
+    for line in lines:
+        if line.startswith('Flight'):
+            current_flight = {}
+            flights.append(current_flight)
+        elif line.startswith('- Departure Airport'):
+            current_flight['departure_airport'] = line.split(': ')[1]
+        elif line.startswith('- Arrival Airport'):
+            current_flight['arrival_airport'] = line.split(': ')[1]
+        elif line.startswith('- Airline'):
+            current_flight['airline'] = line.split(': ')[1]
+        elif line.startswith('- Flight Number'):
+            current_flight['flight_number'] = line.split(': ')[1]
+        elif line.startswith('Hotel'):
+            hotel['name'] = lines[lines.index(line) + 1].split(': ')[1]
+            hotel['description'] = lines[lines.index(line) + 2].split(': ')[1]
+        elif line.startswith('Estimate Cost'):
+            estimate_cost['amount'] = float(line.split(' ')[2].replace(',', ''))
+            estimate_cost['currency'] = line.split(' ')[3]
+
+    package_json = {
+        'flights': flights,
+        'hotel': hotel,
+        'estimate_cost': estimate_cost
+    }
+
+    return json.dumps(package_json, indent=2)
+
+
 def get_question_score(question,response):
     questions=""
     for i in range(len(question)):
@@ -180,6 +338,158 @@ def get_question_score(question,response):
     score = answer['choices'][0]['text']
     rr = re.findall("[+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", score)
     return rr[0]
+
+def get_flights(source, destination, date):
+    access_key = '0ec367da1fb2897d377ee3057b944af1'
+    start_date= date
+    end_date= date
+    url = f'http://api.aviationstack.com/v1/flights?access_key={access_key}&dep_iata={source}&arr_iata={destination}&flight_iata=&date_from={start_date}&date_to={end_date}'
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+    else:
+        print(f"Request failed with status code: {response.status_code}")
+        return "Error!"
+    returned_flights=[]
+    for i in range(0, 5):
+        selected_flight=data['data'][i]
+        flight_date=selected_flight['flight_date']
+        departure_airport= selected_flight['departure']['airport']
+        arrival_airport= selected_flight['arrival']['airport']
+        airline= selected_flight['airline']['name']
+        flight_number= selected_flight['flight']['iata']
+        selected_fight_data= {'flight_date':flight_date,'departure_airport':departure_airport,'arrival_airport':arrival_airport,'airline':airline,'flight_number':flight_number}
+        returned_flights.append(selected_fight_data)
+    return returned_flights
+
+def get_hotels(destination):
+    api_key = "feb69280a932afe21beb5067f434ca4b"
+    secret = "4f0bee06e9"
+    timestamp = str(int(time.time()))
+    signature_data = api_key + secret + timestamp
+    x_signature = hashlib.sha256(signature_data.encode()).hexdigest()
+    
+    headers = {
+        'Accept': 'application/json',
+        'Api-key': api_key,
+        'X-Signature': x_signature
+    }
+
+    url = 'https://api.test.hotelbeds.com/hotel-api/1.0/status'
+
+    response = requests.get(url, headers=headers)
+
+    language = 'en'
+    headers = {'Api-key': 'feb69280a932afe21beb5067f434ca4b',
+              'X-Signature': x_signature ,
+              'Accept' : "application/json",
+              "Accept-Encoding" : "gzip"}
+    url = f'https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?destinationCode={destination}'
+
+
+    response = requests.get(url,headers=headers)
+
+    if response.status_code == 200:
+        data = response.json()
+    else:
+        print(f"Request failed with status code: {response.status_code}")
+    response=[]
+    for i in range(5):
+        temp={}
+        temp['name']=data['hotels'][i]['name']['content']
+        temp['description']=data['hotels'][i]['description']['content']
+        response.append(temp)
+    return response
+
+def get_packages(source, destination, date1, date2, event):
+    going_flights= get_flights(source, destination, date1)
+    coming_flights= get_flights(destination, source, date2)
+    hotels= get_hotels(destination)
+    if event==0:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": f"{prompt_weddings}"}
+            ]
+        )
+    elif event==1:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": f"{prompt_vacation}"}
+            ]
+        )
+    elif event==2:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": f"{prompt_business}"}
+            ]
+        )
+    else:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": f"{prompt_medical}"}
+            ]
+        )
+    speech=response.choices[0].message['content']
+    tt=extract_paragraphs_as_json(speech)
+    return jsonify(json.loads(tt))
+    
+def get_package_details(package):
+    prompt_package_details= f"""
+        The description of the package is:
+        {package}
+
+        I want you to use this description and generate package details in the format given below:
+        
+        
+            <Package Title>
+            
+            Flight 1:
+            - Departure Ariport: ........
+            - Arrival Airport: ........ 
+            - Airline: ........
+            - FLight Number: ........
+
+            Flight 2:
+            - Departure Ariport: ........
+            - Arrival Airport: ........
+            - Airline: ........
+            - Flight Number: ........
+
+
+            Hotel:
+            - Name:........
+            - Description:........
+            
+            Exclusive Details:
+            
+            <put random facts about the destination related to the package. You can pick it up from the description given above>
+            
+            Estimate Cost: <put rounded off number between 20000 and 25000> INR
+
+
+           
+        
+        Replace the dots with the information you can retreive from the description given. 
+        ALSO KEEP IN MIND THAT I ONLY WANT THE PACKAGE DETAILS AND NO OTHER TEXT IN YOUR RESPONSE. 
+        ONLY GIVE ME TEXT REPSPONSE.
+        IT IS ALSO MANDATORY FOR YOU TO REPLACE ALL DOTS. DO NOT LEAVE ANY IN THE RESPONSE YOU GIVE. IF ANY SUCH DETAIL IS NOT GIVEN IN THE DESCRIPTION, MAKE IT UP YOURSELF.
+        DO NOT PUT ANYTHING IN CURLY BRACKETS IN THE OUTPUT YOU GIVE. I WANT COMPLETE ANSWER!
+        EXTENSIVELY USE EMOJIS IN THE OUTPUT TO MAKE IT LOOK BETTER!
+        DO NOT FORGET TO USE EMOJIS!
+    """
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": f"{prompt_package_details}"}
+        ]
+    )
+    pack=response.choices[0].message['content']
+    json_output = parse_package_string(package_string)
+    return jsonify(json.loads(tt))
     
 @app.route('/plot',methods=['GET','POST'])
 def plotcsv():
