@@ -400,7 +400,7 @@ def get_hotels(destination):
         temp['description']=data['hotels'][i]['description']['content']
         response.append(temp)
     return response
-
+@app.route('/makepack',methods=['GET','POST'])
 def get_packages(source, destination, date1, date2, event):
     going_flights= get_flights(source, destination, date1)
     coming_flights= get_flights(destination, source, date2)
@@ -437,6 +437,7 @@ def get_packages(source, destination, date1, date2, event):
     tt=extract_paragraphs_as_json(speech)
     return jsonify(json.loads(tt))
     
+@app.route('/packdetail',methods=['GET','POST'])    
 def get_package_details(package):
     prompt_package_details= f"""
         The description of the package is:
@@ -468,7 +469,7 @@ def get_package_details(package):
             
             <put random facts about the destination related to the package. You can pick it up from the description given above>
             
-            Estimate Cost: <put rounded off number between 20000 and 25000> INR
+            Estimate Cost: <put rounded off number that estimates the total cost of package between 2000 and 2000000> INR
 
 
            
