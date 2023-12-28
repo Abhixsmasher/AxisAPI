@@ -158,7 +158,7 @@ def generate_interview_questions(job_description):
     return questions
 
 def extract_paragraphs_as_json(input_string):
-    prompt = f'''Having {input_string} as the input make a dictionary of the packages in python which is of the form:\
+    prompt = f'''Having {input_string} as the input make a dictionary of the packages in python which is of the form:
     {
       "heading": "🌴 Holiday Paradise Package 1 🌴",
       "content": [
