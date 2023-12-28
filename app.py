@@ -178,11 +178,12 @@ def extract_paragraphs_as_json(input_string):
                 packages.append(current_package)
 
             # Initialize a new package
+            package_heading = line.split(":")[1].strip()
             current_package = {
-                'Heading': line.split(":")[1].strip(),
+                'Heading': package_heading,
                 'Paragraphs': [],
             }
-        else:
+        elif current_package:
             # Add the non-empty line to the current package's paragraphs
             current_package['Paragraphs'].append(line)
 
