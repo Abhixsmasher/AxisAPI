@@ -315,6 +315,9 @@ def get_packages():
     going_flights= get_flights(source, destination, date1)
     coming_flights= get_flights(destination, source, date2)
     hotels= get_hotels(destination)
+    print(going_flights)
+    print(coming_flights)
+    print(hotels)
     prompt_medical=f"""
     The details for going flights are:
     {going_flights}
@@ -435,7 +438,9 @@ def get_packages():
             ]
         )
     speech=response.choices[0].message['content']
+    print(speech)
     tt=extract_paragraphs_as_json(speech)
+    print(tt)
     return jsonify(json.loads(tt))
     
 @app.route('/packdetail',methods=['GET','POST'])    
