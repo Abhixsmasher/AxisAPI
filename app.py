@@ -328,12 +328,12 @@ def get_packages():
     DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
     INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
     Having made the packages as the input make a dictionary of the packages in python which is of the form:
-    {
+    {{
       "heading": "🌴 Holiday Paradise Package 1 🌴",
       "content": [
         "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
       ]
-    }
+    }}
 
     PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.
     """
@@ -359,12 +359,12 @@ def get_packages():
 
     INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
     Having made the packages as the input make a dictionary of the packages in python which is of the form:
-    {
+    {{
       "heading": "🌴 Holiday Paradise Package 1 🌴",
       "content": [
         "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
       ]
-    }
+    }}
 
     PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.
     """
@@ -391,12 +391,12 @@ def get_packages():
 
     INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
     Having made the packages as the input make a dictionary of the packages in python which is of the form:
-    {
+    {{
       "heading": "🌴 Holiday Paradise Package 1 🌴",
       "content": [
         "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
       ]
-    }
+    }}
 
     PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.
     """
@@ -423,12 +423,12 @@ def get_packages():
 
     INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
     Having made the packages as the input make a dictionary of the packages in python which is of the form:
-    {
+    {{
       "heading": "🌴 Holiday Paradise Package 1 🌴",
       "content": [
         "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
       ]
-    }
+    }}
 
     PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.
     """
