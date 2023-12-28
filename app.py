@@ -209,7 +209,7 @@ def parse_package_string(package_string):
             hotel['name'] = lines[lines.index(line) + 1].split(': ')[1]
             hotel['description'] = lines[lines.index(line) + 2].split(': ')[1]
         elif line.startswith('Estimate Cost'):
-            estimate_cost['amount'] = float(line.split(' ')[2].replace(',', ''))
+            estimate_cost['amount'] = string(line.split(' ')[2].replace(',', ''))
             estimate_cost['currency'] = line.split(' ')[3]
 
     package_json = {
