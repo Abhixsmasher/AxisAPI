@@ -491,7 +491,7 @@ def get_package_details():
         ]
     )
     pack=response.choices[0].message['content']
-    json_output = parse_package_string(package_string)
+    json_output = parse_package_string(pack)
     return jsonify(json.loads(tt))
     
 @app.route('/plot',methods=['GET','POST'])
