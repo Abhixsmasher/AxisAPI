@@ -465,7 +465,7 @@ def get_packages():
     print(speech)
     #tt=extract_paragraphs_as_json(speech)
     #print(tt)
-    return jsonify(json.loads(tt))
+    return jsonify(json.loads(speech))
     
 @app.route('/packdetail',methods=['GET','POST'])    
 def get_package_details():
