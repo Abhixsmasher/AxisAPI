@@ -113,100 +113,6 @@ tier2=['IIIT Bangalore',
 
 openai.api_key = os.environ["open_ai_key_1"]
 
-prompt_medical=f"""
-    The details for going flights are:
-    {going_flights}
-    
-    The details for coming back flights are:
-    {coming_flights}
-    
-    The hotel details are:
-    {hotels}
-    
-    The details are given to you in the form of a python list of dictionaries. 
-    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a MEDICAL TREATMENT TRIP package using one of these flights and and one of these hotels for {days} days. 
-    Now what I want you to do is create 2 such packages and describe them in human text. 
-    Use around 100 words to describe EACH package. 
-    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
-    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
-    MAKE SURE YOU ELABORATE ON THE EXCLUSIVE MEDICAL FACILITIES THE DESTINATION HAS TO OFFER.
-    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
-
-
-    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
-    """
-
-prompt_business=f"""
-    The details for going flights are:
-    {going_flights}
-    
-    The details for coming back flights are:
-    {coming_flights}
-    
-    The hotel details are:
-    {hotels}
-    
-    The details are given to you in the form of a python list of dictionaries. 
-    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a BUSINESS TRIP package using one of these flights and and one of these hotels for {days} days. 
-    Now what I want you to do is create 2 such packages and describe them in human text. 
-    Use around 100 words to describe EACH package. 
-    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
-    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
-    MAKE SURE YOU ELABORATE ON HOW THE DESTINATION WOULD BE HELPFUL IN BUSINESS MEETINGS AND THE BUSINESS OPPORTUNITIES IT HAS TO OFFER.
-    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
-
-
-    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
-    """
-
-prompt_vacation=f"""
-    The details for going flights are:
-    {going_flights}
-    
-    The details for coming back flights are:
-    {coming_flights}
-    
-    The hotel details are:
-    {hotels}
-    
-    The details are given to you in the form of a python list of dictionaries. 
-    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination holiday vacation package using one of these flights and and one of these hotels for {days} days. 
-    Now what I want you to do is create 2 such packages and describe them in human text. 
-    Use around 100 words to describe EACH package. 
-    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
-    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
-    MAKE SURE YOU ELABORATE ON THE EXCLUSIVE TOURISM SPOTS AND FACILITIES THE CITY HAS TO OFFER.
-    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
-    USE EMOJIS EXTENSIVELY IN THE HEADING AND DESCRIPTION ALSO
-
-
-    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
-    """
-
-prompt_weddings=f"""
-    The details for going flights are:
-    {going_flights}
-    
-    The details for coming back flights are:
-    {coming_flights}
-    
-    The hotel details are:
-    {hotels}
-    
-    The details are given to you in the form of a python list of dictionaries. 
-    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination wedding package using one of these flights and and one of these hotels for {days} days. 
-    Now what I want you to do is create 2 such packages and describe them in human text. 
-    Use around 100 words to describe EACH package. 
-    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
-    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
-    MAKE SURE YOU ELABORATE ON THE EXCLUSIVE WEDDING FACILITIES THE CITY HAS TO OFFER.
-    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
-    USE EMOJIS EXTENSIVELY IN THE HEADING AND DESCRIPTION ALSO
-
-
-    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
-    """
-
 def tokenize(txt):
     tokens= re.split('\W+', txt)
     return tokens
@@ -400,10 +306,106 @@ def get_hotels(destination):
         response.append(temp)
     return response
 @app.route('/makepack',methods=['GET','POST'])
-def get_packages(source, destination, date1, date2, event):
+def get_packages():
+    source=str(request.args.get('source'))
+    destination=str(request.args.get('destination'))
+    date1=str(request.args.get('date1'))
+    date2=str(request.args.get('date2'))
+    event=int(request.args.get('event'))
     going_flights= get_flights(source, destination, date1)
     coming_flights= get_flights(destination, source, date2)
     hotels= get_hotels(destination)
+    prompt_medical=f"""
+    The details for going flights are:
+    {going_flights}
+    
+    The details for coming back flights are:
+    {coming_flights}
+    
+    The hotel details are:
+    {hotels}
+    
+    The details are given to you in the form of a python list of dictionaries. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a MEDICAL TREATMENT TRIP package using one of these flights and and one of these hotels for {days} days. 
+    Now what I want you to do is create 2 such packages and describe them in human text. 
+    Use around 100 words to describe EACH package. 
+    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
+    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
+    MAKE SURE YOU ELABORATE ON THE EXCLUSIVE MEDICAL FACILITIES THE DESTINATION HAS TO OFFER.
+    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
+
+
+    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
+    """
+    prompt_business=f"""
+    The details for going flights are:
+    {going_flights}
+    
+    The details for coming back flights are:
+    {coming_flights}
+    
+    The hotel details are:
+    {hotels}
+    
+    The details are given to you in the form of a python list of dictionaries. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a BUSINESS TRIP package using one of these flights and and one of these hotels for {days} days. 
+    Now what I want you to do is create 2 such packages and describe them in human text. 
+    Use around 100 words to describe EACH package. 
+    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
+    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
+    MAKE SURE YOU ELABORATE ON HOW THE DESTINATION WOULD BE HELPFUL IN BUSINESS MEETINGS AND THE BUSINESS OPPORTUNITIES IT HAS TO OFFER.
+    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
+
+
+    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
+    """
+    prompt_vacation=f"""
+    The details for going flights are:
+    {going_flights}
+    
+    The details for coming back flights are:
+    {coming_flights}
+    
+    The hotel details are:
+    {hotels}
+    
+    The details are given to you in the form of a python list of dictionaries. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination holiday vacation package using one of these flights and and one of these hotels for {days} days. 
+    Now what I want you to do is create 2 such packages and describe them in human text. 
+    Use around 100 words to describe EACH package. 
+    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
+    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
+    MAKE SURE YOU ELABORATE ON THE EXCLUSIVE TOURISM SPOTS AND FACILITIES THE CITY HAS TO OFFER.
+    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
+    USE EMOJIS EXTENSIVELY IN THE HEADING AND DESCRIPTION ALSO
+
+
+    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
+    """
+    prompt_weddings=f"""
+    The details for going flights are:
+    {going_flights}
+    
+    The details for coming back flights are:
+    {coming_flights}
+    
+    The hotel details are:
+    {hotels}
+    
+    The details are given to you in the form of a python list of dictionaries. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination wedding package using one of these flights and and one of these hotels for {days} days. 
+    Now what I want you to do is create 2 such packages and describe them in human text. 
+    Use around 100 words to describe EACH package. 
+    Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
+    ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
+    MAKE SURE YOU ELABORATE ON THE EXCLUSIVE WEDDING FACILITIES THE CITY HAS TO OFFER.
+    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
+    USE EMOJIS EXTENSIVELY IN THE HEADING AND DESCRIPTION ALSO
+
+
+    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
+    """
+
     if event==0:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
@@ -437,7 +439,8 @@ def get_packages(source, destination, date1, date2, event):
     return jsonify(json.loads(tt))
     
 @app.route('/packdetail',methods=['GET','POST'])    
-def get_package_details(package):
+def get_package_details():
+    package=str(request.args.get('package'))
     prompt_package_details= f"""
         The description of the package is:
         {package}
