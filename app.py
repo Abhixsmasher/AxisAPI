@@ -326,7 +326,7 @@ def get_packages():
     {hotels}
     
     The details are given to you in the form of a python list of dictionaries. 
-    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a MEDICAL TREATMENT TRIP package using one of these flights and and one of these hotels for {days} days. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a MEDICAL TREATMENT TRIP package using one of these flights and and one of these hotels for the difference between departure and arrival dates. 
     Now what I want you to do is create 2 such packages and describe them in human text. 
     Use around 100 words to describe EACH package. 
     Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
@@ -348,7 +348,7 @@ def get_packages():
     {hotels}
     
     The details are given to you in the form of a python list of dictionaries. 
-    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a BUSINESS TRIP package using one of these flights and and one of these hotels for {days} days. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a BUSINESS TRIP package using one of these flights and and one of these hotels for difference between departure and arrival dates. 
     Now what I want you to do is create 2 such packages and describe them in human text. 
     Use around 100 words to describe EACH package. 
     Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
@@ -370,7 +370,7 @@ def get_packages():
     {hotels}
     
     The details are given to you in the form of a python list of dictionaries. 
-    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination holiday vacation package using one of these flights and and one of these hotels for {days} days. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination holiday vacation package using one of these flights and and one of these hotels for difference between departure and arrival dates. 
     Now what I want you to do is create 2 such packages and describe them in human text. 
     Use around 100 words to describe EACH package. 
     Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
@@ -393,7 +393,7 @@ def get_packages():
     {hotels}
     
     The details are given to you in the form of a python list of dictionaries. 
-    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination wedding package using one of these flights and and one of these hotels for {days} days. 
+    You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination wedding package using one of these flights and and one of these hotels for difference between departure and arrival dates. 
     Now what I want you to do is create 2 such packages and describe them in human text. 
     Use around 100 words to describe EACH package. 
     Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
