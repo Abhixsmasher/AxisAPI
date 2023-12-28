@@ -158,40 +158,24 @@ def generate_interview_questions(job_description):
     return questions
 
 def extract_paragraphs_as_json(input_string):
-    packages = []
-    current_package = None
+    prompt = f'''Having {input_string} as the input make a dictionary of the packages in python which is of the form:\
+    {
+      "heading": "🌴 Holiday Paradise Package 1 🌴",
+      "content": [
+        "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
+      ]
+    }
 
-    # Split input string into lines
-    lines = input_string.split('\n')
-
-    for line in lines:
-        line = line.strip()
-
-        # Skip empty lines
-        if not line:
-            continue
-
-        # Check if the line starts with "Package"
-        if line.startswith("Package"):
-            # If a package is already being processed, append it to the list
-            if current_package:
-                packages.append(current_package)
-
-            # Initialize a new package
-            package_heading = line.split(":")[1].strip()
-            current_package = {
-                'Heading': package_heading,
-                'Paragraphs': [],
-            }
-        elif current_package:
-            # Add the non-empty line to the current package's paragraphs
-            current_package['Paragraphs'].append(line)
-
-    # Append the last package to the list
-    if current_package:
-        packages.append(current_package)
-
-    return json.dumps(packages, indent=2)
+    PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.'''
+    answer = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": f"{prompt}"}
+            ]
+        )
+    temp = answer['choices'][0]['text']
+    dict= json.loads(temp)
+    return json.dumps(dict, indent=2)
 
 def parse_package_string(package_string):
     lines = package_string.split('\n')
