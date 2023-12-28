@@ -4,7 +4,7 @@ scikit-learn
 numpy
 PyPDF2
 nltk
-openai
+openai==0.28
 googledrivedownloader
 pymongo
 pillow
