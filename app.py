@@ -157,25 +157,25 @@ def generate_interview_questions(job_description):
     questions = [choice['text'] for choice in response['choices']]
     return questions
 
-def extract_paragraphs_as_json(input_string):
-    prompt = f'''Having {input_string} as the input make a dictionary of the packages in python which is of the form:
-    {
-      "heading": "🌴 Holiday Paradise Package 1 🌴",
-      "content": [
-        "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
-      ]
-    }
+#def extract_paragraphs_as_json(input_string):
+#    prompt = f'''Having {input_string} as the input make a dictionary of the packages in python which is of the form:
+#    {
+#      "heading": "🌴 Holiday Paradise Package 1 🌴",
+#      "content": [
+#        "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
+#      ]
+#    }
 
-    PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.'''
-    answer = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "user", "content": f"{prompt}"}
-            ]
-        )
-    temp = answer['choices'][0]['text']
-    dict= json.loads(temp)
-    return json.dumps(dict, indent=2)
+#    PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.'''
+#    answer = openai.ChatCompletion.create(
+#            model="gpt-3.5-turbo",
+#            messages=[
+#                {"role": "user", "content": f"{prompt}"}
+#            ]
+#        )
+#    temp = answer['choices'][0]['text']
+#    dict= json.loads(temp)
+#    return json.dumps(dict, indent=2)
 
 def parse_package_string(package_string):
     lines = package_string.split('\n')
@@ -358,6 +358,15 @@ def get_packages():
 
 
     INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
+    Having made the packages as the input make a dictionary of the packages in python which is of the form:
+    {
+      "heading": "🌴 Holiday Paradise Package 1 🌴",
+      "content": [
+        "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
+      ]
+    }
+
+    PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.
     """
     prompt_vacation=f"""
     The details for going flights are:
@@ -381,6 +390,15 @@ def get_packages():
 
 
     INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
+    Having made the packages as the input make a dictionary of the packages in python which is of the form:
+    {
+      "heading": "🌴 Holiday Paradise Package 1 🌴",
+      "content": [
+        "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
+      ]
+    }
+
+    PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.
     """
     prompt_weddings=f"""
     The details for going flights are:
@@ -404,6 +422,15 @@ def get_packages():
 
 
     INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
+    Having made the packages as the input make a dictionary of the packages in python which is of the form:
+    {
+      "heading": "🌴 Holiday Paradise Package 1 🌴",
+      "content": [
+        "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
+      ]
+    }
+
+    PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.
     """
 
     if event==0:
