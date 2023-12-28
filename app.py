@@ -157,32 +157,40 @@ def generate_interview_questions(job_description):
     questions = [choice['text'] for choice in response['choices']]
     return questions
 
-def extract_paragraphs_as_json(text):
-    lines = text.split('\n')
+def extract_paragraphs_as_json(input_string):
+    packages = []
+    current_package = None
 
-    # Initialize variables
-    paragraphs = []
-    current_paragraph = None
+    # Split input string into lines
+    lines = input_string.split('\n')
 
     for line in lines:
         line = line.strip()
-        if line:
-            if line.startswith('Heading'):
-                # Start a new paragraph
-                if current_paragraph:
-                    paragraphs.append(current_paragraph)
 
-                # Initialize a new paragraph with the heading
-                current_paragraph = {'heading': line, 'content': []}
-            elif current_paragraph:
-                # Add line to the current paragraph's content
-                current_paragraph['content'].append(line)
+        # Skip empty lines
+        if not line:
+            continue
 
-    # Add the last paragraph
-    if current_paragraph:
-        paragraphs.append(current_paragraph)
+        # Check if the line starts with "Package"
+        if line.startswith("Package"):
+            # If a package is already being processed, append it to the list
+            if current_package:
+                packages.append(current_package)
 
-    return json.dumps(paragraphs, indent=2)
+            # Initialize a new package
+            current_package = {
+                'Heading': line.split(":")[1].strip(),
+                'Paragraphs': [],
+            }
+        else:
+            # Add the non-empty line to the current package's paragraphs
+            current_package['Paragraphs'].append(line)
+
+    # Append the last package to the list
+    if current_package:
+        packages.append(current_package)
+
+    return json.dumps(packages, indent=2)
 
 def parse_package_string(package_string):
     lines = package_string.split('\n')
@@ -315,9 +323,6 @@ def get_packages():
     going_flights= get_flights(source, destination, date1)
     coming_flights= get_flights(destination, source, date2)
     hotels= get_hotels(destination)
-    print(going_flights)
-    print(coming_flights)
-    print(hotels)
     prompt_medical=f"""
     The details for going flights are:
     {going_flights}
