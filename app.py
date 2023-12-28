@@ -209,7 +209,7 @@ def parse_package_string(package_string):
             hotel['name'] = lines[lines.index(line) + 1].split(': ')[1]
             hotel['description'] = lines[lines.index(line) + 2].split(': ')[1]
         elif line.startswith('Estimate Cost'):
-            estimate_cost['amount'] = string(line.split(' ')[2].replace(',', ''))
+            estimate_cost['amount'] = str(line.split(' ')[2].replace(',', ''))
             estimate_cost['currency'] = line.split(' ')[3]
 
     package_json = {
@@ -493,7 +493,7 @@ def get_package_details():
     )
     pack=response.choices[0].message['content']
     json_output = parse_package_string(pack)
-    return jsonify(json.loads(tt))
+    return jsonify(json.loads(json_output))
     
 @app.route('/plot',methods=['GET','POST'])
 def plotcsv():
