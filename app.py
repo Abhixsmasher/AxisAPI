@@ -329,13 +329,18 @@ def get_packages():
     INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
     Having made the packages as the input make a dictionary of the packages in python which is of the form:
     {{
-      "heading": "🌴 Holiday Paradise Package 1 🌴",
-      "content": [
-        "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
-      ]
-    }}
+  "heading": "🏢 Business Adventure Package 1 🏢",
+  "content": [
+    "Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
+  ]
+},{{
+  "heading": "🌇 City Retreat Package 2 🌇",
+  "content": [
+    "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
+  ]
+}}}
 
-    PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.
+    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
     prompt_business=f"""
     The details for going flights are:
@@ -360,13 +365,18 @@ def get_packages():
     INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
     Having made the packages as the input make a dictionary of the packages in python which is of the form:
     {{
-      "heading": "🌴 Holiday Paradise Package 1 🌴",
-      "content": [
-        "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
-      ]
-    }}
+  "heading": "🏢 Business Adventure Package 1 🏢",
+  "content": [
+    "Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
+  ]
+},{{
+  "heading": "🌇 City Retreat Package 2 🌇",
+  "content": [
+    "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
+  ]
+}}}
 
-    PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.
+    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
     prompt_vacation=f"""
     The details for going flights are:
@@ -392,13 +402,18 @@ def get_packages():
     INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
     Having made the packages as the input make a dictionary of the packages in python which is of the form:
     {{
-      "heading": "🌴 Holiday Paradise Package 1 🌴",
-      "content": [
-        "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
-      ]
-    }}
+  "heading": "🏢 Business Adventure Package 1 🏢",
+  "content": [
+    "Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
+  ]
+},{{
+  "heading": "🌇 City Retreat Package 2 🌇",
+  "content": [
+    "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
+  ]
+}}}
 
-    PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.
+    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
     prompt_weddings=f"""
     The details for going flights are:
@@ -424,13 +439,18 @@ def get_packages():
     INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
     Having made the packages as the input make a dictionary of the packages in python which is of the form:
     {{
-      "heading": "🌴 Holiday Paradise Package 1 🌴",
-      "content": [
-        "Fly with IndiGo airlines on flight 6E203 to Hyderabad and stay at The Golkonda Hyderabad hotel. Depart from Indira Gandhi International on December 28, 2023, and arrive at Hyderabad Airport. The hotel offers contemporary luxury and is conveniently located near commercial, IT, shopping, and entertainment hubs. Explore the vibrant city and discover the iconic Charminar, Birla Mandir, and the beautiful Hussain Sagar Lake. Indulge in exquisite Indian cuisine at the hotel's rooftop restaurant and enjoy daily complimentary full-American breakfast. Have a memorable and relaxing vacation experience in Hyderabad!"
-      ]
-    }}
+  "heading": "🏢 Business Adventure Package 1 🏢",
+  "content": [
+    "Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
+  ]
+},{{
+  "heading": "🌇 City Retreat Package 2 🌇",
+  "content": [
+    "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
+  ]
+}}}
 
-    PRINT ONLY THE DICTIONARY OF THE PAKAGES AND NOTHING ELSE.
+    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
 
     if event==0:
