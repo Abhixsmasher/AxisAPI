@@ -301,6 +301,8 @@ def get_hotels(destination):
 @app.route('/makepack',methods=['GET','POST'])
 def get_packages():
     source=str(request.args.get('source'))
+    no_of_people=int(request.args.get('no_of_people'))
+    recommendations=str(request.args.get('recommend'))
     destination=str(request.args.get('destination'))
     date1=str(request.args.get('date1'))
     date2=str(request.args.get('date2'))
@@ -317,30 +319,26 @@ def get_packages():
     
     The hotel details are:
     {hotels}
-    
-    The details are given to you in the form of a python list of dictionaries. 
+
+    Number of people are:
+    {no_of_people}
+
+    Some things to keep in mind while making the package are:
+    {recommendations}
+    The details of flights and hotels are given to you in the form of a python list of dictionaries. 
     You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a MEDICAL TREATMENT TRIP package using one of these flights and and one of these hotels for the difference between departure and arrival dates. 
-    Now what I want you to do is create 2 such packages and describe them in human text. 
-    Use around 100 words to describe EACH package. 
+    Now what I want you to do is create a packages and describe it in human text. 
+    Use around 100 words to describe the package. 
     Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
     ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
     MAKE SURE YOU ELABORATE ON THE EXCLUSIVE MEDICAL FACILITIES THE DESTINATION HAS TO OFFER.
-    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
-    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
-    Having made the packages as the input make a dictionary of the packages in python which is of the form:
-  {{
-    "heading": "🏢 Business Adventure Package 1 🏢",
-    "content": [
-      "Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
-    ]
-  }},
-  {{
-    "heading": "🌇 City Retreat Package 2 🌇",
-    "content": [
-      "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
-    ]
-  }}
-]
+    DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO
+    USE A CATCHY TITLE FOR IT.
+    Having made the package make a dictionary of the packages in python which is of the form:
+    {{
+    "content": 
+    " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
+    }}
     PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
     prompt_business=f"""
@@ -352,34 +350,27 @@ def get_packages():
     
     The hotel details are:
     {hotels}
-    
-    The details are given to you in the form of a python list of dictionaries. 
+
+    Number of people are:
+    {no_of_people}
+
+    Some things to keep in mind while making the package are:
+    {recommendations}
+    The details of flights and hotels are given to you in the form of a python list of dictionaries.
     You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a BUSINESS TRIP package using one of these flights and and one of these hotels for difference between departure and arrival dates. 
-    Now what I want you to do is create 2 such packages and describe them in human text. 
+    Now what I want you to do is create a package and describe them in human text. 
     Use around 100 words to describe EACH package. 
     Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
     ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
     MAKE SURE YOU ELABORATE ON HOW THE DESTINATION WOULD BE HELPFUL IN BUSINESS MEETINGS AND THE BUSINESS OPPORTUNITIES IT HAS TO OFFER.
     DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
 
-
-    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
-    Having made the packages as the input make a dictionary of the packages in python which is of the form:
-    [
-  {{
-    "heading": "🏢 Business Adventure Package 1 🏢",
-    "content": [
-      "Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
-    ]
-  }},
-  {{
-    "heading": "🌇 City Retreat Package 2 🌇",
-    "content": [
-      "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
-    ]
-  }}
-]
-
+    USE A CATCHY TITLE FOR IT.
+    Having made the package make a dictionary of the packages in python which is of the form:
+    {{
+    "content": 
+    " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
+    }}
     PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
     prompt_vacation=f"""
@@ -391,35 +382,26 @@ def get_packages():
     
     The hotel details are:
     {hotels}
-    
-    The details are given to you in the form of a python list of dictionaries. 
+
+    Number of people are:
+    {no_of_people}
+
+    Some things to keep in mind while making the package are:
+    {recommendations}
+    The details of the flights and the hotels are given to you in the form of a python list of dictionaries. 
     You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination holiday vacation package using one of these flights and and one of these hotels for difference between departure and arrival dates. 
-    Now what I want you to do is create 2 such packages and describe them in human text. 
-    Use around 100 words to describe EACH package. 
+    Now what I want you to do is create a package and describe them in human text. 
+    Use around 100 words to describe the package. 
     Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
     ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
     MAKE SURE YOU ELABORATE ON THE EXCLUSIVE TOURISM SPOTS AND FACILITIES THE CITY HAS TO OFFER.
     DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
     USE EMOJIS EXTENSIVELY IN THE HEADING AND DESCRIPTION ALSO
-
-
-    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
-    Having made the packages as the input make a dictionary of the packages in python which is of the form:
-   [
-  {{
-    "heading": "🏢 Business Adventure Package 1 🏢",
-    "content": [
-      "Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
-    ]
-  }},
-  {{
-    "heading": "🌇 City Retreat Package 2 🌇",
-    "content": [
-      "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
-    ]
-  }}
-]
-
+    Having made the package make a dictionary of the packages in python which is of the form:
+    {{
+    "content": 
+    " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
+    }}
     PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
     prompt_weddings=f"""
@@ -431,35 +413,28 @@ def get_packages():
     
     The hotel details are:
     {hotels}
-    
-    The details are given to you in the form of a python list of dictionaries. 
+
+    Number of people are:
+    {no_of_people}
+
+    Some things to keep in mind while making the package are:
+    {recommendations}
+    The details of the hotels and the flights are given to you in the form of a python list of dictionaries. 
     You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination wedding package using one of these flights and and one of these hotels for difference between departure and arrival dates. 
-    Now what I want you to do is create 2 such packages and describe them in human text. 
-    Use around 100 words to describe EACH package. 
+    Now what I want you to do is create a package and describe them in human text. 
+    Use around 100 words to describe the package. 
     Describe everything about the package from which airline's flight the customer will be taking for travel to and from the destination.
     ALSO KEEP IN MIND THAT I ONLY WANT THE DESCRIPTIONS AND NO OTHER TEXT IN YOUR RESPONSE. 
     MAKE SURE YOU ELABORATE ON THE EXCLUSIVE WEDDING FACILITIES THE CITY HAS TO OFFER.
     DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
     USE EMOJIS EXTENSIVELY IN THE HEADING AND DESCRIPTION ALSO
 
-
-    INSTEAD OF USING 'PACKAGE 1' AND 'PACKAGE 2', USE A CATCHY TITLE FOR IT AND THEN ADD THE PACKAGE NUMBER AT THE END BUT USE THIS ONLY IN THE TITLE.
-    Having made the packages as the input make a dictionary of the packages in python which is of the form:
-    [
-  {{
-    "heading": "🏢 Business Adventure Package 1 🏢",
-    "content": [
-      "Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
-    ]
-  }},
-  {{
-    "heading": "🌇 City Retreat Package 2 🌇",
-    "content": [
-      "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
-    ]
-  }}
-]
-
+    USE A CATCHY TITLE FOR IT.
+    Having made the package make a dictionary of the packages in python which is of the form:
+    {{
+    "content": 
+    " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
+    }}
     PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
 
