@@ -338,8 +338,7 @@ def get_packages():
   "content": [
     "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
   ]
-}}}
-
+}
     PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
     prompt_business=f"""
@@ -374,7 +373,7 @@ def get_packages():
   "content": [
     "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
   ]
-}}}
+}
 
     PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
@@ -411,7 +410,7 @@ def get_packages():
   "content": [
     "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
   ]
-}}}
+}
 
     PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
@@ -448,7 +447,7 @@ def get_packages():
   "content": [
     "Embark on a journey with Qantas airlines on flight QF5281 from Chhatrapati Shivaji International (Sahar International) airport in Mumbai to Indira Gandhi International. Experience a memorable stay at The Oberoi, Mumbai, located in fashionable south Mumbai with magnificent views of the Arabian Sea. The hotel offers spacious accommodations, fine cuisines, and genuine hospitality. Take advantage of its proximity to business, cultural, and shopping areas. Discover Mumbai's vibrant atmosphere and visit iconic landmarks such as the Gateway of India and Marine Drive. Have successful meetings in the city known for its diverse industries and enjoy the excellent services and amenities provided by the hotel."
   ]
-}}}
+}
 
     PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
     """
