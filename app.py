@@ -334,7 +334,7 @@ def get_packages():
     MAKE SURE YOU ELABORATE ON THE EXCLUSIVE MEDICAL FACILITIES THE DESTINATION HAS TO OFFER.
     DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO
     USE A CATCHY TITLE FOR IT.
-    Having made the package make a dictionary of the packages in python which is of the form:
+    Having made the package make a dictionary of the packages in python which follows a similar format but with different content:
     {{
     "content": 
     " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
@@ -366,7 +366,7 @@ def get_packages():
     DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
 
     USE A CATCHY TITLE FOR IT.
-    Having made the package make a dictionary of the packages in python which is of the form:
+    Having made the package make a dictionary of the packages in python which follows a similar format but with different content:
     {{
     "content": 
     " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
@@ -397,7 +397,7 @@ def get_packages():
     MAKE SURE YOU ELABORATE ON THE EXCLUSIVE TOURISM SPOTS AND FACILITIES THE CITY HAS TO OFFER.
     DO NOT FORGET TO USE THE FLIGHT INFORMATION GIVEN TO YOU FOR BOTH GOING TO THE DESTINATION AND COMING BACK. PUT THAT IN THE PACKAGE DESCRIPTION ALSO.
     USE EMOJIS EXTENSIVELY IN THE HEADING AND DESCRIPTION ALSO
-    Having made the package make a dictionary of the packages in python which is of the form:
+    Having made the package make a dictionary of the packages in python which follows a similar format but with different content:
     {{
     "content": 
     " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
@@ -430,7 +430,7 @@ def get_packages():
     USE EMOJIS EXTENSIVELY IN THE HEADING AND DESCRIPTION ALSO
 
     USE A CATCHY TITLE FOR IT.
-    Having made the package make a dictionary of the packages in python which is of the form:
+    Having made the package make a dictionary of the packages in python which follows a similar format but with different content:
     {{
     "content": 
     " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
@@ -511,6 +511,7 @@ def get_package_details():
            
         
         Replace the dots with the information you can retreive from the description given. 
+        TRY TO GUESS THE ESTIMATE COST BASED ON THE HOTEL FLIGHTS AND OTHER AMENITIES AND KEEP IT BASED ON HISTORIC DATA NOT JUST ANY RANDOM NUMBER.
         DO NOT USE RUPEES SYMBOL OR ANY SYMBOL WITH NUMBERS WHEN SHOWING ESTIMATE COST.
         ALSO KEEP IN MIND THAT I ONLY WANT THE PACKAGE DETAILS AND NO OTHER TEXT IN YOUR RESPONSE. 
         ONLY GIVE ME TEXT REPSPONSE.
