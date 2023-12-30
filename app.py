@@ -323,7 +323,7 @@ def get_packages():
     Number of people are:
     {no_of_people}
 
-    Some things to keep in mind while making the package are:
+    Some THINGS TO KEEP IN MIND AND CHOOSE HOTEL AND FLIGHTS while making the package are:
     {recommendations}
     The details of flights and hotels are given to you in the form of a python list of dictionaries. 
     You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a MEDICAL TREATMENT TRIP package using one of these flights and and one of these hotels for the difference between departure and arrival dates. 
@@ -337,9 +337,9 @@ def get_packages():
     Having made the package make a dictionary of the packages in python which follows a similar format but with different content:
     {{
     "content": 
-    " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
+    " 🏢 Business Adventure Package 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
     }}
-    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
+    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES WHILE CHANGING THE '🏢 Business Adventure Package 1 🏢' to A TITLE SUITING THE EVENT.
     """
     prompt_business=f"""
     The details for going flights are:
@@ -354,7 +354,7 @@ def get_packages():
     Number of people are:
     {no_of_people}
 
-    Some things to keep in mind while making the package are:
+    Some THINGS TO KEEP IN MIND AND CHOOSE HOTEL AND FLIGHTS while making the package are:
     {recommendations}
     The details of flights and hotels are given to you in the form of a python list of dictionaries.
     You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a BUSINESS TRIP package using one of these flights and and one of these hotels for difference between departure and arrival dates. 
@@ -371,7 +371,7 @@ def get_packages():
     "content": 
     " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
     }}
-    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
+    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES WHILE CHANGING THE '🏢 Business Adventure Package 1 🏢' to A TITLE SUITING THE EVENT.
     """
     prompt_vacation=f"""
     The details for going flights are:
@@ -386,7 +386,7 @@ def get_packages():
     Number of people are:
     {no_of_people}
 
-    Some things to keep in mind while making the package are:
+    Some THINGS TO KEEP IN MIND AND CHOOSE HOTEL AND FLIGHTS while making the package are:
     {recommendations}
     The details of the flights and the hotels are given to you in the form of a python list of dictionaries. 
     You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination holiday vacation package using one of these flights and and one of these hotels for difference between departure and arrival dates. 
@@ -402,7 +402,7 @@ def get_packages():
     "content": 
     " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
     }}
-    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
+    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES WHILE CHANGING THE '🏢 Business Adventure Package 1 🏢' to A TITLE SUITING THE EVENT.
     """
     prompt_weddings=f"""
     The details for going flights are:
@@ -417,7 +417,7 @@ def get_packages():
     Number of people are:
     {no_of_people}
 
-    Some things to keep in mind while making the package are:
+    Some THINGS TO KEEP IN MIND AND CHOOSE HOTEL AND FLIGHTS while making the package are:
     {recommendations}
     The details of the hotels and the flights are given to you in the form of a python list of dictionaries. 
     You are given 5 flights for going to the destination, 5 flights to come back and 5 hotels each. We have to derive a destination wedding package using one of these flights and and one of these hotels for difference between departure and arrival dates. 
@@ -435,7 +435,7 @@ def get_packages():
     "content": 
     " 🏢 Business Adventure Package 1 🏢 Take a flight with IndiGo airlines on flight 6E2009 from Indira Gandhi International to Chhatrapati Shivaji International (Sahar International) airport in Mumbai. Stay at Fariyas Hotel, a luxurious city hotel situated in the heart of South Mumbai. The hotel is conveniently located close to shops, sea terminals, and the main train station. It offers elegant guest rooms, various dining options, and a relaxing ambiance. Explore the business opportunities in Mumbai, known as India's financial hub, and have productive meetings in the city's bustling corporate environment. Enjoy the culinary delights at the hotel's restaurants, offering Chinese, European, and Indian cuisines."
     }}
-    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES AND NOTHING ELSE.
+    PRINT ONLY THE PYTHON DICTIONARY OF THE PACKAGES WHILE CHANGING THE '🏢 Business Adventure Package 1 🏢' to A TITLE SUITING THE EVENT.
     """
 
     if event==0:
