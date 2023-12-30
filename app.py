@@ -278,7 +278,7 @@ def get_hotels(destination):
     response = requests.get(url, headers=headers)
 
     language = 'en'
-    headers = {'Api-key': 'feb69280a932afe21beb5067f434ca4b',
+    headers = {'Api-key': 'f5f60f979a5925ad4c21797b53be34c8',
               'X-Signature': x_signature ,
               'Accept' : "application/json",
               "Accept-Encoding" : "gzip"}
