@@ -261,8 +261,8 @@ def get_flights(source, destination, date):
     return returned_flights
 
 def get_hotels(destination):
-    api_key = "feb69280a932afe21beb5067f434ca4b"
-    secret = "4f0bee06e9"
+    api_key = "f5f60f979a5925ad4c21797b53be34c8"
+    secret = "c17a54076e"
     timestamp = str(int(time.time()))
     signature_data = api_key + secret + timestamp
     x_signature = hashlib.sha256(signature_data.encode()).hexdigest()
