@@ -528,7 +528,7 @@ def get_package_details():
         'hotel': {},
         'estimate_cost': {}
     }
-    while any(not isinstance(value, dict) for value in json_output.values()):
+    while any(not (isinstance(value, dict) and value) for value in json_output.values()):
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
