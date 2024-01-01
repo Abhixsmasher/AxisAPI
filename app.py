@@ -14,13 +14,13 @@ from nltk.tokenize import word_tokenize
 from sklearn.metrics.pairwise import linear_kernel
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
-from google_drive_downloader import GoogleDriveDownloader as gdd
+#from google_drive_downloader import GoogleDriveDownloader as gdd
 import nltk
 import openai
 import time
 import smtplib
 import ssl
-import pymongo
+#import pymongo
 from email.message import EmailMessage
 from PIL import Image
 from email.mime.multipart import MIMEMultipart
@@ -530,17 +530,17 @@ def get_package_details():
     json_output = parse_package_string(pack)
     return jsonify(json.loads(json_output))
     
-@app.route('/plot',methods=['GET','POST'])
-def plotcsv():
-    csv=str(request.args.get('csv'))
-    ID=url_to_id(csv)
-    gdd.download_file_from_google_drive(file_id=ID, dest_path='./lib/data/data.csv')
-    time.sleep(3)
-    df = pd.read_csv('./lib/data/data.csv')
-    for column in df.columns:
-        if not pd.api.types.is_numeric_dtype(df[column]):
-            try:
-                df[column] = pd.to_numeric(df[column])
+#@app.route('/plot',methods=['GET','POST'])
+#def plotcsv():
+#    csv=str(request.args.get('csv'))
+#    ID=url_to_id(csv)
+#    gdd.download_file_from_google_drive(file_id=ID, dest_path='./lib/data/data.csv')
+#    time.sleep(3)
+#    df = pd.read_csv('./lib/data/data.csv')
+#    for column in df.columns:
+#        if not pd.api.types.is_numeric_dtype(df[column]):
+#            try:
+'''                df[column] = pd.to_numeric(df[column])
             except ValueError:
                 df = df.drop(columns=[column])
     correlations = df.corr()
@@ -581,9 +581,9 @@ def plotcsv():
     final={
         'status':'success'
     }
-    return jsonify(final)
+    return jsonify(final)'''
 
-@app.route('/csvanalyze',methods=['GET','POST'])
+'''@app.route('/csvanalyze',methods=['GET','POST'])
 def csvanalyze():
     csv=str(request.args.get('csv'))
     query=str(request.args.get('query'))
@@ -635,7 +635,7 @@ def csvanalyze():
         'status': 'success',
     }
     os.remove('./lib/data/data.csv')
-    return jsonify(response)
+    return jsonify(response)'''
     
 @app.route('/emailpost',methods=['GET','POST'])
 def email_post():
@@ -727,7 +727,7 @@ def email_post():
     }
     return jsonify(response)
     
-@app.route('/CV',methods=['GET'])
+'''@app.route('/CV',methods=['GET'])
 def CV_handle():
     JD_text=str(request.args.get('description'))
     JD_text=JD_text.replace(" ", "")
@@ -757,7 +757,7 @@ def CV_handle():
         'email' : email,
         'CV_score' : final_score
     }
-    return jsonify(response)
+    return jsonify(response)'''
 
 @app.route('/Paraphrasejd',methods=['GET','POST'])
 def paraphrase():
@@ -900,7 +900,7 @@ def sendSelectMail():
     }
     return jsonify(response)
 
-@app.route('/submit',methods=['GET','POST'])
+'''@app.route('/submit',methods=['GET','POST'])
 def save_to_mongodb():
     email= str(request.args.get('email'))
     email=email.replace('%40','@')
@@ -928,4 +928,4 @@ def save_to_mongodb():
         'testscore': score,
         'job_id':job_id,
     }
-    return jsonify(response) 
+    return jsonify(response)''' 
