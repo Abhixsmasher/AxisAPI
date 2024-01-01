@@ -523,14 +523,20 @@ def get_package_details():
         EXTENSIVELY USE EMOJIS IN THE OUTPUT TO MAKE IT LOOK BETTER!
         DO NOT FORGET TO USE EMOJIS!
     """
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "user", "content": f"{prompt_package_details}"}
-        ]
-    )
-    pack=response.choices[0].message['content']
-    json_output = parse_package_string(pack)
+    json_output={
+        'flights': {},
+        'hotel': {},
+        'estimate_cost': {}
+    }
+    while(json_output['flights']=={} or json_output['hotel']=={} or json_output['estimate_cost']=={}):
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": f"{prompt_package_details}"}
+            ]
+        )
+        pack=response.choices[0].message['content']
+        json_output = parse_package_string(pack)
     return jsonify(json.loads(json_output))
     
 #@app.route('/plot',methods=['GET','POST'])
