@@ -211,7 +211,7 @@ def parse_package_string(package_string):
         'estimate_cost': estimate_cost
     }
 
-    return json.dumps(package_json, indent=2)
+    return package_json
 
 
 def get_question_score(question,response):
