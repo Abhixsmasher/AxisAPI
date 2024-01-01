@@ -5,8 +5,6 @@ numpy
 PyPDF2
 nltk
 openai==0.28
-googledrivedownloader
-pymongo
 pillow
 pydantic==1.10.9
 langchain[llm]
