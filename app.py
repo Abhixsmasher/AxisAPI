@@ -528,7 +528,8 @@ def get_package_details():
         'hotel': {},
         'estimate_cost': {}
     }
-    while any(not (isinstance(value, dict) and value) for value in json_output.values()):
+    count=2
+    while any(not (isinstance(value, dict) and value) for value in json_output.values()) and count>0:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -537,6 +538,7 @@ def get_package_details():
         )
         pack=response.choices[0].message['content']
         json_output = parse_package_string(pack)
+        count=count-1
     return jsonify(json_output)
     
 #@app.route('/plot',methods=['GET','POST'])
