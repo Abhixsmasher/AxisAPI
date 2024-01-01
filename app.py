@@ -514,6 +514,7 @@ def get_package_details():
            
         
         Replace the dots with the information you can retreive from the description given. 
+        MAKE SURE ALL THE FIELDS ARE FILLED.
         TRY TO GUESS THE ESTIMATE COST BASED ON THE HOTEL FLIGHTS AND OTHER AMENITIES AND KEEP IT BASED ON HISTORIC DATA NOT JUST ANY RANDOM NUMBER.
         DO NOT USE RUPEES SYMBOL OR ANY SYMBOL WITH NUMBERS WHEN SHOWING ESTIMATE COST.
         ALSO KEEP IN MIND THAT I ONLY WANT THE PACKAGE DETAILS AND NO OTHER TEXT IN YOUR RESPONSE. 
@@ -530,6 +531,7 @@ def get_package_details():
     }
     count=2
     while any(not (isinstance(value, dict) and value) for value in json_output.values()) and count>0:
+        time.sleep(15)
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -537,6 +539,7 @@ def get_package_details():
             ]
         )
         pack=response.choices[0].message['content']
+        print(pack)
         json_output = parse_package_string(pack)
         count=count-1
     return jsonify(json_output)
