@@ -308,8 +308,11 @@ def get_packages():
     date2=str(request.args.get('date2'))
     event=int(request.args.get('event'))
     going_flights= get_flights(source, destination, date1)
+    print(going_flights)
     coming_flights= get_flights(destination, source, date2)
+    print(coming_flights)
     hotels= get_hotels(destination)
+    print(hotels)
     prompt_medical=f"""
     The details for going flights are:
     {going_flights}
