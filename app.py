@@ -261,8 +261,8 @@ def get_flights(source, destination, date):
     return returned_flights
 
 def get_hotels(destination):
-    api_key = "f5f60f979a5925ad4c21797b53be34c8"
-    secret = "c17a54076e"
+    api_key = "feb69280a932afe21beb5067f434ca4b"
+    secret = "4f0bee06e9"
     timestamp = str(int(time.time()))
     signature_data = api_key + secret + timestamp
     x_signature = hashlib.sha256(signature_data.encode()).hexdigest()
@@ -278,7 +278,7 @@ def get_hotels(destination):
     response = requests.get(url, headers=headers)
 
     language = 'en'
-    headers = {'Api-key': 'f5f60f979a5925ad4c21797b53be34c8',
+    headers = {'Api-key': 'feb69280a932afe21beb5067f434ca4b',
               'X-Signature': x_signature ,
               'Accept' : "application/json",
               "Accept-Encoding" : "gzip"}
